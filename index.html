@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/images/sitetitle.png" />
+
+    <!-- Default SEO (overridden per-page by react-helmet-async) -->
+    <title>The Hanging Gate | Pub & Restaurant | Chapel-en-le-Frith</title>
+    <meta name="description" content="Family run pub & restaurant in Chapel-en-le-Frith, High Peak. Open every day from 10am for breakfasts, lunches, afternoon teas and evening meals. Function rooms, outside catering, baby friendly." />
+    <meta name="keywords" content="hanging gate, chapel-en-le-frith, pub, restaurant, high peak, derbyshire, function rooms, outside catering, christmas, baby friendly" />
+    <link rel="canonical" href="https://www.hanginggate-chapel.co.uk/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:site_name" content="The Hanging Gate Pub & Restaurant" />
+    <meta property="og:title" content="The Hanging Gate | Pub & Restaurant | Chapel-en-le-Frith" />
+    <meta property="og:description" content="Family run pub & restaurant in Chapel-en-le-Frith, High Peak. Open every day from 10am. Function rooms, outside catering, baby friendly." />
+    <meta property="og:image" content="https://www.hanginggate-chapel.co.uk/images/pub-exterior.jpg" />
+    <meta property="og:url" content="https://www.hanginggate-chapel.co.uk/" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Hanging Gate | Pub & Restaurant | Chapel-en-le-Frith" />
+    <meta name="twitter:description" content="Family run pub & restaurant in the High Peak. Open every day from 10am." />
+    <meta name="twitter:image" content="https://www.hanginggate-chapel.co.uk/images/pub-exterior.jpg" />
+
+    <!-- JSON-LD Restaurant Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "The Hanging Gate Pub and Restaurant",
+      "description": "Family run pub and restaurant in Chapel-en-le-Frith, High Peak, Derbyshire. Open every day from 10am serving breakfasts, lunches, afternoon teas and evening meals. Function rooms, outside catering, baby friendly.",
+      "url": "https://www.hanginggate-chapel.co.uk",
+      "telephone": "+441298812776",
+      "email": "hanginggatechapel@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Manchester Road",
+        "addressLocality": "Chapel-en-le-Frith",
+        "addressRegion": "Derbyshire",
+        "postalCode": "SK23 9UH",
+        "addressCountry": "GB"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 53.3248,
+        "longitude": -1.9185
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "10:00",
+          "closes": "20:00"
+        }
+      ],
+      "servesCuisine": ["British", "Traditional pub food"],
+      "priceRange": "££",
+      "currenciesAccepted": "GBP",
+      "paymentAccepted": "Cash, Credit Card, Debit Card",
+      "hasMap": "https://maps.google.com/?q=The+Hanging+Gate,+Manchester+Road,+Chapel-en-le-Frith,+SK23+9UH",
+      "image": "https://www.hanginggate-chapel.co.uk/images/pub-exterior.jpg",
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Baby Friendly", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Dog Friendly", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Wheelchair Accessible", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Function Rooms", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Outside Catering", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Free Room Hire", "value": true }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
