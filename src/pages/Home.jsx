@@ -13,10 +13,22 @@ const highlights = [
 ]
 
 const quickLinks = [
-  { label: 'See Our Menus', to: '/menus', color: '#8B1A1A' },
-  { label: 'Book a Table', to: '/contact', color: '#6B5E52' },
-  { label: 'Functions & Events', to: '/facilities', color: '#5C7A4A' },
-  { label: 'Outside Catering', to: '/outside-catering', color: '#4A5C7A' },
+  {
+    label: 'See Our Menus', to: '/menus', color: '#8B1A1A', sub: 'From breakfasts to evening meals',
+    svg: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>,
+  },
+  {
+    label: 'Book a Table', to: '/contact', color: '#6B5E52', sub: 'Call or send an enquiry',
+    svg: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>,
+  },
+  {
+    label: 'Functions & Events', to: '/facilities', color: '#5C7A4A', sub: 'Up to 180 guests, free rooms',
+    svg: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
+  },
+  {
+    label: 'Outside Catering', to: '/outside-catering', color: '#4A5C7A', sub: 'Free delivery, from £7/head',
+    svg: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>,
+  },
 ]
 
 export default function Home() {
@@ -50,18 +62,32 @@ export default function Home() {
       </section>
 
       {/* Quick links */}
-      <section style={{ backgroundColor: '#F0EBE0', padding: '40px 24px' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '12px' }}>
+      <section style={{ backgroundColor: '#F0EBE0', padding: '36px 24px', borderTop: '1px solid #E8DFD0', borderBottom: '1px solid #E8DFD0' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '14px' }}>
           {quickLinks.map(q => (
-            <Link key={q.to} to={q.to} style={{
-              backgroundColor: q.color, color: 'white', padding: '20px 16px', borderRadius: '6px',
-              textDecoration: 'none', textAlign: 'center',
-              fontFamily: "'Playfair Display', Georgia, serif", fontSize: '16px', fontWeight: 600, display: 'block',
+            <Link key={q.to} to={q.to} className="quick-link-card" style={{
+              backgroundColor: 'white',
+              border: `1px solid ${q.color}30`,
+              borderLeft: `3px solid ${q.color}`,
+              borderRadius: '8px',
+              textDecoration: 'none',
+              padding: '18px 20px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '14px',
+              transition: 'transform 0.15s, box-shadow 0.15s',
             }}>
-              {q.label}
+              <div style={{ color: q.color, flexShrink: 0 }}>{q.svg}</div>
+              <div>
+                <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '15px', fontWeight: 600, color: '#1C1410', marginBottom: '2px' }}>{q.label}</div>
+                <div style={{ fontSize: '12px', color: '#6B5E52' }}>{q.sub}</div>
+              </div>
             </Link>
           ))}
         </div>
+        <style>{`
+          .quick-link-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+        `}</style>
       </section>
 
       {/* Welcome text + interior photo */}
