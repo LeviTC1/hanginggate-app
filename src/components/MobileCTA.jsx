@@ -4,13 +4,13 @@ export default function MobileCTA() {
   return (
     <>
       <div className="mobile-cta">
-        <a href="tel:01298812776" style={{ flex: 1, backgroundColor: '#8B1A1A', color: 'white', textDecoration: 'none', textAlign: 'center', padding: '14px 8px', fontSize: '14px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+        <a href="tel:01298812776" style={{ flex: 1, backgroundColor: 'var(--surface-dark-2)', color: 'white', textDecoration: 'none', textAlign: 'center', padding: '14px 8px', fontSize: '14px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
           <span style={{ fontSize: '16px' }}>☎</span> Call Us
         </a>
-        <Link to="/book" style={{ flex: 1, backgroundColor: '#C9A84C', color: '#3D0808', textDecoration: 'none', textAlign: 'center', padding: '14px 8px', fontSize: '14px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-          <span style={{ fontSize: '16px' }}>📅</span> Book a Table
+        <Link to="/book" style={{ flex: 1, backgroundColor: 'var(--gold)', color: '#1a1208', textDecoration: 'none', textAlign: 'center', padding: '14px 8px', fontSize: '14px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+          <span style={{ fontSize: '16px' }}>📅</span> Book Now
         </Link>
-        <Link to="/menus" style={{ flex: 1, backgroundColor: '#4A3D34', color: 'white', textDecoration: 'none', textAlign: 'center', padding: '14px 8px', fontSize: '14px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+        <Link to="/menus" style={{ flex: 1, backgroundColor: 'var(--text-secondary)', color: 'white', textDecoration: 'none', textAlign: 'center', padding: '14px 8px', fontSize: '14px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
           <span style={{ fontSize: '16px' }}>🍽</span> Menus
         </Link>
       </div>

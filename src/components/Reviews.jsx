@@ -37,11 +37,11 @@ function Stars({ count }) {
 
 export default function Reviews() {
   return (
-    <section style={{ backgroundColor: '#FAF7F2', padding: '78px 24px' }}>
+    <section style={{ backgroundColor: 'var(--surface-card)', padding: '78px 24px' }}>
       <div style={{ maxWidth: '1120px', margin: '0 auto' }}>
         <div className="fade-up" style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <p style={{ color: '#9A7A3F', fontSize: '12px', letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '10px' }}>What our guests say</p>
-          <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(24px, 4vw, 36px)', color: '#8B1A1A', marginBottom: '12px' }}>
+          <p style={{ color: 'var(--gold-muted)', fontSize: '12px', letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '10px' }}>What our guests say</p>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(24px, 4vw, 36px)', color: 'var(--surface-dark-2)', marginBottom: '12px' }}>
             Guest Reviews
           </h2>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
@@ -50,8 +50,8 @@ export default function Reviews() {
                 <span key={i} style={{ color: '#F5A623', fontSize: '22px' }}>★</span>
               ))}
             </div>
-            <span style={{ color: '#4A3D34', fontSize: '16px', fontWeight: 700 }}>5.0</span>
-            <span style={{ color: '#6B5E52', fontSize: '14px' }}>· Rated on Google</span>
+            <span style={{ color: 'var(--text-secondary)', fontSize: '16px', fontWeight: 700 }}>5.0</span>
+            <span style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>· Rated on Google</span>
           </div>
         </div>
 
@@ -68,12 +68,12 @@ export default function Reviews() {
               boxShadow: '0 16px 24px rgba(34,22,15,0.08)',
             }}>
               <Stars count={r.stars} />
-              <p style={{ color: '#4A3D34', fontSize: '14px', lineHeight: 1.75, flex: 1, fontStyle: 'italic' }}>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.75, flex: 1, fontStyle: 'italic' }}>
                 "{r.text}"
               </p>
-              <div style={{ borderTop: '1px solid #E8DFD0', paddingTop: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontWeight: 700, color: '#1C1410', fontSize: '14px' }}>{r.name}</span>
-                <span style={{ color: '#9B8E84', fontSize: '12px' }}>{r.date}</span>
+              <div style={{ borderTop: '1px solid var(--border-default)', paddingTop: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '14px' }}>{r.name}</span>
+                <span style={{ color: 'var(--text-muted)', fontSize: '12px' }}>{r.date}</span>
               </div>
             </div>
           ))}
@@ -81,7 +81,7 @@ export default function Reviews() {
 
         <div className="fade-up" style={{ textAlign: 'center' }}>
           <a
-            href="https://www.google.com/search?q=The+Hanging+Gate+Chapel-en-le-Frith+reviews"
+            href="https://www.google.com/search?q=The+Hanging+Gate+Chapel-en-le-Frith,+High+Peak,+Derbyshire+reviews"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-wine"

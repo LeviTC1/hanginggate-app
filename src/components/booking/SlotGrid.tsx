@@ -10,7 +10,7 @@ type SlotGridProps = {
 export default function SlotGrid({ slots, selected, onSelect }: SlotGridProps) {
   if (!slots.length) {
     return (
-      <p style={{ color: '#6B5E52', fontSize: '14px' }}>
+      <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>
         No slots found for this date.
       </p>
     )
@@ -35,16 +35,16 @@ export default function SlotGrid({ slots, selected, onSelect }: SlotGridProps) {
             disabled={isDisabled}
             onClick={() => onSelect(slot.time)}
             style={{
-              border: isSelected ? '1px solid #E2C97E' : '1px solid rgba(139,26,26,0.2)',
+              border: isSelected ? '1px solid var(--gold-light)' : '1px solid var(--border-default)',
               borderRadius: '10px',
               padding: '10px 8px',
               textAlign: 'center',
               background: isDisabled
-                ? 'rgba(124,95,76,0.12)'
+                ? 'rgba(241,244,236,0.08)'
                 : isSelected
-                  ? 'linear-gradient(170deg, #1E1510, #3A2418)'
-                  : '#fff',
-              color: isDisabled ? '#8A7D70' : isSelected ? '#F7E6BF' : '#3A2B1F',
+                  ? 'linear-gradient(170deg, #182217, #253322)'
+                  : 'var(--surface-card)',
+              color: isDisabled ? 'var(--text-muted)' : isSelected ? 'var(--text-inverse)' : 'var(--text-primary)',
               cursor: isDisabled ? 'not-allowed' : 'pointer',
               opacity: isDisabled ? 0.7 : 1,
             }}

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import MenuCard from '../components/cards/MenuCard'
+import MenuCarousel from '../components/sections/MenuCarousel'
 import PageHero from '../components/PageHero'
 import RevealWrapper from '../components/ui/RevealWrapper'
 import SectionWrapper from '../components/ui/SectionWrapper'
@@ -20,7 +20,7 @@ const menus = [
     description: 'Two courses from £15.95 and three courses from £17.50, available Monday to Saturday.',
     price: 'From £15.95',
     category: 'Mon - Sat',
-    image: '/images/20071014120059img03.jpg',
+    image: '/images/christmas-bar.jpg',
   },
   {
     to: '/menus/set-menu',
@@ -74,27 +74,20 @@ export default function Menus() {
 
       <PageHero title="See Our Menus" subtitle="Something for every occasion, appetite and budget" />
 
-      <SectionWrapper variant="light" py="lg">
-        <RevealWrapper className="text-center">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--gold-muted)]">Explore</p>
-          <h2 className="mt-3 font-display text-[var(--text-2xl)] text-[var(--wine)]">Choose Your Dining Experience</h2>
+      <SectionWrapper variant="ink" py="lg">
+        <RevealWrapper className="mx-auto flex max-w-[62rem] flex-col items-center text-center">
+          <p className="section-label">Explore</p>
+          <h2 className="mt-3 font-display text-[var(--text-2xl)] text-[var(--text-inverse)]">Choose Your Dining Experience</h2>
+          <p className="mt-3 max-w-[58ch] text-center text-[15px] leading-[1.8] text-[rgba(241,244,236,0.9)]">
+            Swipe, click, or use arrow keys to browse. Select the centred card to open a menu.
+          </p>
         </RevealWrapper>
 
-        <RevealWrapper variant="stagger" className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {menus.map((menu) => (
-            <MenuCard
-              key={menu.to}
-              to={menu.to}
-              image={menu.image}
-              category={menu.category}
-              title={menu.title}
-              description={menu.description}
-              price={menu.price}
-            />
-          ))}
+        <RevealWrapper className="mt-10">
+          <MenuCarousel items={menus} />
         </RevealWrapper>
 
-        <RevealWrapper className="mt-12 rounded-3xl border border-[rgba(212,168,50,0.34)] bg-[linear-gradient(145deg,#17110D,#241810)] p-8 text-center shadow-[var(--shadow-lg)]">
+        <RevealWrapper className="mt-12 rounded-3xl border border-[rgba(212,168,50,0.34)] bg-[linear-gradient(145deg,#162017,#243125)] p-8 text-center shadow-[var(--shadow-lg)]">
           <p className="font-display text-[26px] text-[rgba(255,255,255,0.95)]">Need something tailored?</p>
           <p className="mt-3 text-[14px] leading-[1.7] text-[rgba(255,255,255,0.72)]">
             We can build bespoke menus to suit your event, guest list, and budget.

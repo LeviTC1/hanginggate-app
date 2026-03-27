@@ -5,8 +5,8 @@ const DEFAULT_IMAGE = `${BASE_URL}/images/pub-exterior.jpg`
 
 export default function SEO({ title, description, path = '', image = DEFAULT_IMAGE }) {
   const fullTitle = title
-    ? `${title} | The Hanging Gate, Chapel-en-le-Frith`
-    : 'The Hanging Gate | Pub & Restaurant | Chapel-en-le-Frith'
+    ? `${title} | The Hanging Gate, Chapel-en-le-Frith, High Peak, Derbyshire`
+    : 'The Hanging Gate | Pub & Restaurant | Chapel-en-le-Frith, High Peak, Derbyshire'
   const url = `${BASE_URL}${path}`
 
   return (

@@ -25,7 +25,7 @@ export default function MenuCard({
     <Link
       to={to}
       className={clsx(
-        'group relative block aspect-[4/5] overflow-hidden rounded-2xl bg-[#120b06] text-white shadow-[var(--shadow-lg)] transition-transform duration-[400ms] ease-[var(--ease-spring)] hover:scale-[1.015]',
+        'group relative block aspect-[4/5] overflow-hidden rounded-2xl bg-[var(--surface-dark)] text-white shadow-[var(--shadow-lg)] transition-transform duration-[400ms] ease-[var(--ease-spring)] hover:scale-[1.015]',
         className,
       )}
     >
@@ -33,7 +33,7 @@ export default function MenuCard({
         className="absolute inset-0 bg-cover bg-center transition-transform duration-[900ms] ease-[var(--ease-spring)] group-hover:scale-[1.06]"
         style={{ backgroundImage: `url(${image})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,6,3,0)] via-[rgba(10,6,3,0.45)] to-[rgba(10,6,3,0.96)] transition-opacity duration-300 group-hover:opacity-90" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,16,12,0)] via-[rgba(10,16,12,0.45)] to-[rgba(10,16,12,0.96)] transition-opacity duration-300 group-hover:opacity-90" />
       <div className="absolute inset-0 rounded-2xl shadow-[inset_0_0_0_1.5px_rgba(212,168,50,0)] transition-shadow duration-300 group-hover:shadow-[var(--inset-gold)]" />
 
       {price ? (

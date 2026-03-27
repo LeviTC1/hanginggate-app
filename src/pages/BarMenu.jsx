@@ -6,7 +6,7 @@ function Section({ title, children }) {
   return (
     <div style={{ marginBottom: '48px' }}>
       <SEO path="/menus/bar-restaurant" description="Full bar & restaurant menu at The Hanging Gate. Breakfasts from 10am, steaks, fish, roasts, vegetarian options, children's menu and desserts." />
-      <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '24px', color: '#8B1A1A', marginBottom: '6px', paddingBottom: '12px', borderBottom: '2px solid #E8DFD0' }}>
+      <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--gold-light)', marginBottom: '6px', paddingBottom: '12px', borderBottom: '2px solid var(--border-default)' }}>
         {title}
       </h2>
       {children}
@@ -16,12 +16,12 @@ function Section({ title, children }) {
 
 function MenuItem({ name, price, desc }) {
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '14px 0', borderBottom: '1px solid #F0EBE0', gap: '16px' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '14px 0', borderBottom: '1px solid var(--surface-warm)', gap: '16px' }}>
       <div>
-        <div style={{ fontWeight: 500, color: '#1C1410', fontSize: '15px' }}>{name}</div>
-        {desc && <div style={{ color: '#6B5E52', fontSize: '13px', marginTop: '3px', lineHeight: 1.5 }}>{desc}</div>}
+        <div style={{ fontWeight: 500, color: 'var(--text-primary)', fontSize: '15px' }}>{name}</div>
+        {desc && <div style={{ color: 'var(--text-secondary)', fontSize: '13px', marginTop: '3px', lineHeight: 1.5 }}>{desc}</div>}
       </div>
-      {price && <div style={{ color: '#8B1A1A', fontWeight: 600, fontSize: '15px', flexShrink: 0 }}>{price}</div>}
+      {price && <div style={{ color: 'var(--gold-light)', fontWeight: 700, fontSize: '15px', flexShrink: 0 }}>{price}</div>}
     </div>
   )
 }
@@ -31,7 +31,7 @@ export default function BarMenu() {
     <div>
       <PageHero title="Bar & Restaurant Menu" subtitle="Served every day from 10am" />
       <div style={{ maxWidth: '900px', margin: '0 auto', padding: '64px 24px' }}>
-        <Link to="/menus" style={{ color: '#8B1A1A', textDecoration: 'none', fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '40px' }}>
+        <Link to="/menus" style={{ color: 'var(--gold-light)', textDecoration: 'none', fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '40px' }}>
           ← Back to Menus
         </Link>
 
@@ -73,7 +73,7 @@ export default function BarMenu() {
         </Section>
 
         <Section title="🥖 Baguettes — Available until 6pm only">
-          <div style={{ color: '#6B5E52', fontSize: '13px', marginBottom: '8px', fontStyle: 'italic' }}>All baguettes served on wholemeal or white with salad & chips</div>
+          <div style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '8px', fontStyle: 'italic' }}>All baguettes served on wholemeal or white with salad & chips</div>
           <MenuItem name="Beef, Onion & Horseradish" price="£11.95" />
           <MenuItem name="Tuna Mayonnaise" price="£11.95" />
           <MenuItem name="Ham, Mature Cheddar & Branston" price="£11.95" />
@@ -83,7 +83,7 @@ export default function BarMenu() {
         </Section>
 
         <Section title="🥔 Jacket Potatoes — Available until 6pm only">
-          <div style={{ color: '#6B5E52', fontSize: '13px', marginBottom: '8px', fontStyle: 'italic' }}>All jackets served with a generous salad & coleslaw</div>
+          <div style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '8px', fontStyle: 'italic' }}>All jackets served with a generous salad & coleslaw</div>
           <MenuItem name="Cheese or Beans" price="£11.95" />
           <MenuItem name="Garlic Mushrooms" price="£12.75" />
           <MenuItem name="Prawns & Marie Rose Sauce" price="£12.95" />
@@ -91,16 +91,16 @@ export default function BarMenu() {
         </Section>
 
         <Section title="🥩 Steaks & Grills">
-          <div style={{ color: '#6B5E52', fontSize: '13px', marginBottom: '8px', fontStyle: 'italic' }}>All steaks cooked to your liking and served with mushrooms, onion rings, fresh vegetables and choice of potatoes</div>
+          <div style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '8px', fontStyle: 'italic' }}>All steaks cooked to your liking and served with mushrooms, onion rings, fresh vegetables and choice of potatoes</div>
           <MenuItem name="8oz Sirloin Steak" price="£24.95" />
           <MenuItem name="10oz Fillet Steak" price="£28.95" />
           <MenuItem name="24oz T-Bone Steak" price="£28.95" />
           <MenuItem name="12oz Gammon Steak & Egg" price="£20.95" desc="Served with peas, onion rings & chips" />
           <MenuItem name="Mixed Grill" price="£28.95" desc="Rump steak, chicken breast, gammon, lamb chop, pork chop, sausage, liver, black pudding & fried egg" />
           <MenuItem name="Chicken Breast" price="£19.50" desc="With choice of garlic or pepper sauce, onion rings, vegetables and chips" />
-          <div style={{ marginTop: '16px', padding: '16px', backgroundColor: '#F0EBE0', borderRadius: '6px' }}>
-            <div style={{ fontWeight: 600, color: '#8B1A1A', marginBottom: '8px', fontSize: '14px' }}>Add a Home-Made Sauce — £4.50</div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '6px', fontSize: '13px', color: '#6B5E52' }}>
+          <div style={{ marginTop: '16px', padding: '16px', backgroundColor: 'var(--surface-warm)', borderRadius: '6px' }}>
+            <div style={{ fontWeight: 700, color: 'var(--gold-light)', marginBottom: '8px', fontSize: '14px' }}>Add a Home-Made Sauce — £4.50</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '6px', fontSize: '13px', color: 'var(--text-secondary)' }}>
               <span><strong>Garlic</strong> — garlic, cream & white wine</span>
               <span><strong>Pepper</strong> — pepper, cream & brandy</span>
               <span><strong>Diane</strong> — French mustard, tomato, cream, onions & mushrooms</span>
@@ -156,7 +156,7 @@ export default function BarMenu() {
           <MenuItem name="Vanilla Ice Cream" price="£5.95" desc="With chocolate, butterscotch or strawberry sauce" />
           <MenuItem name="Strawberry Ice Cream" price="£6.50" desc="Topped with strawberry sauce" />
           <MenuItem name="Chocolate Ice Cream" price="£6.50" desc="Topped with chocolate sauce" />
-          <div style={{ marginTop: '16px', padding: '12px 16px', backgroundColor: '#F0EBE0', borderRadius: '6px', fontSize: '13px', color: '#6B5E52', lineHeight: 1.8 }}>
+          <div style={{ marginTop: '16px', padding: '12px 16px', backgroundColor: 'var(--surface-warm)', borderRadius: '6px', fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.8 }}>
             <div>* Apple & Caramel Crumble, Profiteroles, Hot Chocolate Fudge Cake, Baileys Cheesecake, Sherry Trifle and Gluten Free Chocolate Brownie available as a child's portion — <strong>£4.95</strong></div>
             <div>** Vanilla Ice Cream, Strawberry Ice Cream and Chocolate Ice Cream available as a child's portion — <strong>£3.95</strong></div>
           </div>
@@ -176,17 +176,17 @@ export default function BarMenu() {
 
         <Section title="👶 Children's Menu">
           <div style={{ marginBottom: '12px' }}>
-            <div style={{ fontWeight: 600, color: '#8B1A1A', marginBottom: '8px', fontSize: '14px' }}>Starters</div>
+            <div style={{ fontWeight: 700, color: 'var(--gold-light)', marginBottom: '8px', fontSize: '14px' }}>Starters</div>
             <MenuItem name="Chilled Melon" price="£4.50" desc="Garnished with fresh fruits" />
             <MenuItem name="Garlic Mushrooms" price="£4.50" desc="Served with salad and French bread" />
             <MenuItem name="Soup of the Day" price="£4.50" desc="Served with French bread" />
           </div>
           <div style={{ marginBottom: '12px' }}>
-            <div style={{ fontWeight: 600, color: '#8B1A1A', marginBottom: '8px', fontSize: '14px' }}>Main Courses</div>
+            <div style={{ fontWeight: 700, color: 'var(--gold-light)', marginBottom: '8px', fontSize: '14px' }}>Main Courses</div>
             <MenuItem name="Roast Beef & Yorkshire" price="£8.50" desc="Served with fresh vegetables, new and roast potatoes" />
             <MenuItem name="Home-Made Lasagne" price="£7.50" desc="Served with salad and chips" />
             <MenuItem name="Cheese & Tomato Pizza" price="£8.25" desc="Served with salad and chips" />
-            <div style={{ color: '#6B5E52', fontSize: '13px', marginTop: '8px', marginBottom: '4px', fontStyle: 'italic' }}>The following can be served with chips or jacket with beans or vegetables:</div>
+            <div style={{ color: 'var(--text-secondary)', fontSize: '13px', marginTop: '8px', marginBottom: '4px', fontStyle: 'italic' }}>The following can be served with chips or jacket with beans or vegetables:</div>
             {['Steak Pie £8.25', 'Cheese & Onion Flan £8.25', 'Deep Fried Scampi £8.25', 'Jumbo Fishfinger £8.25', 'Sausages £8.25', 'Chicken Nuggets £8.25', 'Beefburger £8.25', 'Cheeseburger £8.75', 'Bacon Cheeseburger £9.25'].map(item => {
               const [name, price] = item.split(' £')
               return <MenuItem key={name} name={name} price={`£${price}`} />

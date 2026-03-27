@@ -37,11 +37,11 @@ export default function FeaturesSection({ className }: FeaturesSectionProps) {
   return (
     <SectionWrapper variant="warm" py="lg" className={className}>
       <RevealWrapper className="text-center">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--gold-muted)]">Why visit us</p>
+        <p className="section-label section-label--dark">Why visit us</p>
         <h2 className="mt-3 font-display text-[var(--text-2xl)] text-[var(--wine)]">Everything That Makes Us Special</h2>
       </RevealWrapper>
 
-      <RevealWrapper variant="stagger" className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <RevealWrapper variant="stagger" className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {highlights.map((item, index) => (
           <FeatureCard key={item.title} number={String(index + 1).padStart(2, '0')} title={item.title} body={item.body} />
         ))}

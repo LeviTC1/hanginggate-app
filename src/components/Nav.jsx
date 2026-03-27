@@ -36,10 +36,10 @@ export default function Nav() {
 
       <div className="site-nav-shell">
         <Link to="/" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column' }}>
-          <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '20px', fontWeight: 700, color: '#FAF7F2', letterSpacing: '0.5px', lineHeight: 1.1 }}>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 700, color: 'var(--surface-card)', letterSpacing: '0.5px', lineHeight: 1.1 }}>
             The Hanging Gate
           </span>
-          <span style={{ fontSize: '11px', color: '#E2C97E', letterSpacing: '2px', textTransform: 'uppercase' }}>
+          <span style={{ fontSize: '11px', color: 'var(--gold-light)', letterSpacing: '2px', textTransform: 'uppercase' }}>
             Pub & Restaurant
           </span>
         </Link>
@@ -58,7 +58,7 @@ export default function Nav() {
             ))}
           </nav>
           <Link to="/book" className="btn btn-reserve nav-reserve-btn">
-            Reserve
+            Book Now
           </Link>
         </div>
 
@@ -75,7 +75,7 @@ export default function Nav() {
 
       {open && (
         <div className="mobile-nav">
-          <Link to="/book" className="btn btn-reserve mobile-reserve-btn">Reserve a Table</Link>
+          <Link to="/book" className="btn btn-reserve mobile-reserve-btn">Reserve Your Table</Link>
           {navItems.map(item => (
             <NavLink
               key={item.to}

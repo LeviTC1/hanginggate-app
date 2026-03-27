@@ -8,12 +8,12 @@ export default function SetMenu() {
       <SEO path="/menus/set-menu" description="3 course set menu at The Hanging Gate for £27.95 per head. Available all day every day (excluding December and certain dates)." />
       <PageHero title="3 Course Set Menu" subtitle="£27.95 per head · Available all day, every day" />
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '64px 24px' }}>
-        <Link to="/menus" style={{ color: '#8B1A1A', textDecoration: 'none', fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '40px' }}>
+        <Link to="/menus" style={{ color: 'var(--gold-light)', textDecoration: 'none', fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '40px' }}>
           ← Back to Menus
         </Link>
 
-        <div style={{ backgroundColor: '#F0EBE0', borderRadius: '8px', padding: '16px 24px', marginBottom: '40px', fontSize: '14px', color: '#6B5E52' }}>
-          <strong style={{ color: '#8B1A1A' }}>Please note:</strong> Excluding December, Valentine's Day, Mothering Sunday, and the first week of January.
+        <div style={{ backgroundColor: 'var(--surface-warm)', borderRadius: '8px', padding: '16px 24px', marginBottom: '40px', fontSize: '14px', color: 'var(--text-secondary)' }}>
+          <strong style={{ color: 'var(--gold-light)' }}>Please note:</strong> Excluding December, Valentine's Day, Mothering Sunday, and the first week of January.
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -55,14 +55,14 @@ export default function SetMenu() {
             }
           ].map(({ course, items }) => (
             <div key={course}>
-              <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '22px', color: '#8B1A1A', marginBottom: '16px', paddingBottom: '10px', borderBottom: '2px solid #E8DFD0' }}>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '22px', color: 'var(--gold-light)', marginBottom: '16px', paddingBottom: '10px', borderBottom: '2px solid var(--border-default)' }}>
                 {course}
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {items.map(item => (
-                  <div key={item} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', padding: '12px 16px', backgroundColor: '#FAF7F2', borderRadius: '6px', border: '1px solid #E8DFD0' }}>
-                    <span style={{ color: '#C9A84C', flexShrink: 0, marginTop: '2px' }}>✦</span>
-                    <span style={{ color: '#1C1410', fontSize: '15px', lineHeight: 1.5 }}>{item}</span>
+                  <div key={item} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', padding: '12px 16px', backgroundColor: 'var(--surface-card)', borderRadius: '6px', border: '1px solid var(--border-default)' }}>
+                    <span style={{ color: 'var(--gold)', flexShrink: 0, marginTop: '2px' }}>✦</span>
+                    <span style={{ color: 'var(--text-primary)', fontSize: '15px', lineHeight: 1.5 }}>{item}</span>
                   </div>
                 ))}
               </div>
@@ -70,11 +70,11 @@ export default function SetMenu() {
           ))}
         </div>
 
-        <div style={{ marginTop: '48px', backgroundColor: '#8B1A1A', borderRadius: '8px', padding: '32px', textAlign: 'center', color: 'white' }}>
-          <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '36px', fontWeight: 700, color: '#E2C97E', marginBottom: '8px' }}>£27.95</div>
+        <div style={{ marginTop: '48px', backgroundColor: 'var(--surface-dark-2)', borderRadius: '8px', padding: '32px', textAlign: 'center', color: 'white' }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontSize: '36px', fontWeight: 700, color: 'var(--gold-light)', marginBottom: '8px' }}>£27.95</div>
           <div style={{ fontSize: '16px', marginBottom: '20px', opacity: 0.9 }}>per head · 3 courses</div>
           <Link to="/book" className="btn btn-reserve">
-            Reserve a Table
+            Reserve Your Table
           </Link>
         </div>
       </div>

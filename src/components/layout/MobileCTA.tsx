@@ -22,15 +22,13 @@ export default function MobileCTA() {
         ready ? 'translate-y-0' : 'translate-y-full',
       )}
     >
-      <div className="pointer-events-auto relative rounded-t-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(10,6,3,0.94)] px-4 pb-4 pt-4 shadow-[0_-14px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl">
-        <span className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(212,168,50,0.75)] to-transparent" />
-
+      <div className="pointer-events-auto relative rounded-[var(--radius-md)] border-t border-[rgba(200,144,26,0.2)] bg-[rgba(13,20,14,0.94)] px-4 pb-4 pt-4 shadow-[0_-14px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl">
         <div className="flex items-center gap-3">
           <Link to="/book" className="btn btn-primary w-full justify-center">
-            Reserve a Table
+            Reserve Your Table
           </Link>
           <Link to="/menus" className="shrink-0 text-[14px] font-medium text-[rgba(255,255,255,0.62)] hover:text-[rgba(255,255,255,0.9)]">
-            View Menus
+            Explore Menus
           </Link>
         </div>
       </div>

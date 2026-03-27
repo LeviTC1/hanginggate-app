@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const slides = [
   {
     src: '/images/pub-exterior.jpg',
-    alt: 'The Hanging Gate pub exterior, Chapel-en-le-Frith',
+    alt: 'The Hanging Gate pub exterior, Chapel-en-le-Frith, High Peak, Derbyshire',
     caption: 'A landmark in the High Peak since 1901',
   },
   {
@@ -71,13 +71,13 @@ export default function HeroCarousel() {
       <div className="hero-overlay" />
 
       <div className="hero-content">
-        <p className="hero-reveal" style={{ color: '#E2C97E', fontSize: '13px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '20px', fontWeight: 500, ['--hero-delay']: '80ms' }}>
-          Chapel-en-le-Frith · High Peak · Derbyshire
+        <p className="hero-reveal" style={{ color: 'var(--gold-light)', fontSize: '13px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '20px', fontWeight: 500, ['--hero-delay']: '80ms' }}>
+          Chapel-en-le-Frith, High Peak, Derbyshire
         </p>
-        <h1 className="hero-reveal" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(36px, 7vw, 72px)', color: '#FAF7F2', lineHeight: 1.1, marginBottom: '16px', fontWeight: 700, ['--hero-delay']: '160ms' }}>
+        <h1 className="hero-reveal" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px, 7vw, 72px)', color: 'var(--surface-card)', lineHeight: 1.1, marginBottom: '16px', fontWeight: 700, ['--hero-delay']: '160ms' }}>
           The Hanging Gate
         </h1>
-        <p className="hero-reveal" style={{ color: '#E2C97E', fontSize: '18px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '24px', ['--hero-delay']: '220ms' }}>
+        <p className="hero-reveal" style={{ color: 'var(--gold-light)', fontSize: '18px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '24px', ['--hero-delay']: '220ms' }}>
           Pub & Restaurant
         </p>
         <p
@@ -101,10 +101,10 @@ export default function HeroCarousel() {
         </p>
         <div className="hero-reveal" style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', ['--hero-delay']: '420ms' }}>
           <Link to="/menus" className="btn btn-gold">
-            View Our Menus
+            Explore Menus
           </Link>
           <Link to="/book" className="btn btn-outline-light">
-            Reserve a Table
+            Reserve Your Table
           </Link>
         </div>
         <div className="hero-reveal" style={{ ['--hero-delay']: '480ms' }}>
@@ -139,7 +139,7 @@ export default function HeroCarousel() {
             style={{
               width: i === current ? '24px' : '8px',
               height: '8px',
-              backgroundColor: i === current ? '#E2C97E' : 'rgba(255,255,255,0.5)',
+              backgroundColor: i === current ? 'var(--gold-light)' : 'rgba(255,255,255,0.5)',
             }}
           />
         ))}

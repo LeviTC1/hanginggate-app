@@ -14,17 +14,17 @@ const seasonalHeroes: SeasonalHero[] = [
   {
     key: 'christmas',
     label: 'Christmas',
-    image: '/images/hero-christmas.jpg',
+    image: '/images/christmas-restaurant.jpg',
   },
   {
     key: 'halloween',
     label: 'Halloween',
-    image: '/images/hero-halloween.jpg',
+    image: '/images/christmas-fireplace.jpg',
   },
   {
     key: 'year-round',
     label: 'Year Round',
-    image: '/images/hero-year-round.jpg',
+    image: '/images/pub-exterior.jpg',
   },
 ]
 
@@ -47,12 +47,14 @@ export default function CinematicHero() {
       <div
         className="absolute inset-0 bg-cover bg-center transition-[background-image] duration-500 ease-[var(--ease-standard)]"
         style={{
-          backgroundImage: `url(${activeHero.image})`,
-          animation: 'heroKenBurns 20s linear infinite alternate',
+          backgroundImage: `url(${activeHero.image}), url('/images/christmas-restaurant.jpg')`,
+          backgroundColor: 'var(--surface-dark-2)',
+          animation: 'heroKenBurns 28s linear infinite alternate',
         }}
       />
 
-      <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(10,6,4,0.95)_0%,rgba(10,6,4,0.86)_40%,rgba(10,6,4,0.36)_70%,rgba(10,6,4,0.18)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(7,12,8,0.97)_0%,rgba(7,12,8,0.9)_28%,rgba(7,12,8,0.72)_50%,rgba(7,12,8,0.38)_72%,rgba(7,12,8,0.14)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_100%_at_50%_100%,transparent_30%,rgba(7,12,8,0.55)_100%)]" />
       <div className="grain-overlay" />
 
       <div className="relative z-10 w-full px-[5vw] pb-[8vh]">
@@ -63,17 +65,21 @@ export default function CinematicHero() {
           className="max-w-[760px]"
         >
           <p
-            className="hero-eyebrow text-[11px] font-semibold uppercase tracking-[0.22em]"
-            style={{ color: accentColor }}
+            className="section-label"
+            style={{ color: accentColor, textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}
           >
             {eyebrowText}
           </p>
+          <span className="gold-rule" style={{ background: accentColor }} />
 
           <h1 className="mt-4 font-display text-[clamp(44px,8vw,96px)] font-bold leading-[1.03] tracking-[-0.02em] text-white">
             Settle in. Something special awaits.
           </h1>
 
-          <p className="mt-5 max-w-[640px] text-[clamp(16px,2.3vw,20px)] leading-[1.75] text-[rgba(245,240,232,0.9)]">
+          <p
+            className="mt-5 max-w-[580px] text-[clamp(17px,2.1vw,21px)] leading-[1.8] text-[rgba(245,240,232,0.85)]"
+            style={{ fontFamily: 'var(--font-editorial)', fontStyle: 'italic' }}
+          >
             Crafted menus, attentive service, and seasonal decorations that have to be seen to be believed.
           </p>
 
@@ -93,12 +99,12 @@ export default function CinematicHero() {
                 type="button"
                 onClick={() => setActiveSeason(season.key)}
                 className={clsx(
-                  'hero-season-pill rounded-full border px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.1em] text-white transition-all duration-200',
+                  'hero-season-pill rounded-[var(--radius-md)] border px-4 py-[7px] text-[12px] font-semibold uppercase tracking-[0.1em] text-white transition-all duration-200',
                   activeSeason === season.key
                     ? 'border-transparent shadow-[0_6px_20px_rgba(0,0,0,0.3)]'
-                    : 'border-[rgba(245,240,232,0.45)] bg-[rgba(26,18,8,0.42)] hover:border-[rgba(245,240,232,0.75)]',
+                    : 'border-[rgba(241,244,236,0.45)] bg-[rgba(22,32,23,0.46)] hover:border-[rgba(241,244,236,0.78)]',
                 )}
-                style={activeSeason === season.key ? { backgroundColor: accentColor, color: '#f5f0e8' } : undefined}
+                style={activeSeason === season.key ? { backgroundColor: accentColor, color: 'var(--text-inverse)' } : undefined}
               >
                 {season.label}
               </button>
@@ -109,7 +115,7 @@ export default function CinematicHero() {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-[rgba(10,6,4,0.95)] via-[rgba(10,6,4,0.68)] to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-[rgba(9,14,10,0.95)] via-[rgba(9,14,10,0.68)] to-transparent"
       />
 
       {siteSeasonMode === 'halloween' ? (
@@ -118,7 +124,7 @@ export default function CinematicHero() {
           aria-hidden="true"
           className="pointer-events-none absolute right-0 top-[78px] z-10 h-[220px] w-[220px] opacity-[0.15] md:h-[250px] md:w-[250px]"
           fill="none"
-          stroke="#f5f0e8"
+          stroke="var(--text-inverse)"
           strokeWidth="1.2"
         >
           <path d="M240 0H0" />
@@ -131,11 +137,7 @@ export default function CinematicHero() {
           <path d="M150 90Q120 120 90 150" />
         </svg>
       ) : null}
-
       <style>{`
-        .hero-eyebrow {
-          transition: color 220ms var(--ease-standard);
-        }
         .hero-season-pill:hover {
           border-color: ${accentHover};
         }

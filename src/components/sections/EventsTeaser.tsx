@@ -11,7 +11,7 @@ export default function EventsTeaser({ className }: EventsTeaserProps) {
   return (
     <SectionWrapper variant="dark" py="lg" className={className}>
       <RevealWrapper className="text-center">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--gold)]">Events</p>
+        <p className="section-label">Events</p>
         <h2 className="mt-3 font-display text-[var(--text-2xl)] text-white">Forthcoming Moments</h2>
       </RevealWrapper>
 

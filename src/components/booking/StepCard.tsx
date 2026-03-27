@@ -9,17 +9,17 @@ export default function StepCard({ title, subtitle, children }: StepCardProps) {
   return (
     <section
       style={{
-        background: 'linear-gradient(165deg, rgba(255,255,255,0.96), rgba(249,241,227,0.92))',
-        border: '1px solid rgba(139,26,26,0.18)',
+        background: 'linear-gradient(165deg, rgba(22,38,26,0.96), rgba(19,33,23,0.94))',
+        border: '1px solid var(--border-default)',
         borderRadius: '14px',
         padding: '24px',
-        boxShadow: '0 16px 24px rgba(34,22,15,0.08)',
+        boxShadow: '0 16px 24px rgba(4,8,5,0.28)',
       }}
     >
       <header style={{ marginBottom: '16px' }}>
         <h2
           style={{
-            color: '#7A1111',
+            color: 'var(--gold)',
             fontSize: 'clamp(24px, 4vw, 34px)',
             marginBottom: subtitle ? '6px' : 0,
           }}
@@ -27,7 +27,7 @@ export default function StepCard({ title, subtitle, children }: StepCardProps) {
           {title}
         </h2>
         {subtitle && (
-          <p style={{ color: '#6B5E52', fontSize: '14px', lineHeight: 1.6 }}>{subtitle}</p>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>{subtitle}</p>
         )}
       </header>
       {children}

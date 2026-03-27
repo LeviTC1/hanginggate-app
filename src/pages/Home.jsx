@@ -46,7 +46,7 @@ export default function Home() {
     <div>
       <SEO
         path="/"
-        description="Family run pub and restaurant in Chapel-en-le-Frith, High Peak. Open every day from 10am with breakfasts, lunches, afternoon teas, evening meals, and event hosting."
+        description="Family run pub and restaurant in Chapel-en-le-Frith, High Peak, Derbyshire. Open every day from 10am with breakfasts, lunches, afternoon teas, evening meals, and event hosting."
         image="/images/pub-exterior.jpg"
       />
 
@@ -59,7 +59,7 @@ export default function Home() {
 
       <SectionWrapper variant="ink" py="lg">
         <RevealWrapper className="text-center">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--gold)]">Menus</p>
+          <p className="section-label">Menus</p>
           <h2 className="mt-3 font-display text-[var(--text-2xl)] text-white">Choose Your Dining Experience</h2>
           <p className="mt-3 text-[15px] text-[rgba(255,255,255,0.68)]">From everyday dining to special occasions, there is a menu for every visit.</p>
         </RevealWrapper>
@@ -80,7 +80,7 @@ export default function Home() {
 
         <RevealWrapper className="mt-10 text-center">
           <Link to="/menus" className="btn btn-ghost-light">
-            View All Menus
+            Explore Menus
           </Link>
         </RevealWrapper>
       </SectionWrapper>

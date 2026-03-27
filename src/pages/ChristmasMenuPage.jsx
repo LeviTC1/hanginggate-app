@@ -8,22 +8,22 @@ export default function ChristmasMenuPage() {
       <SEO path="/menus/christmas" description="Christmas menus 2025 at The Hanging Gate. Senior Christmas from £22.95, full Christmas menu from £33.95. Available from 19th November." />
       <PageHero title="Christmas Menus 2025" subtitle="Available from 19th November 2025 · Decorations up by 20th November" />
       <div style={{ maxWidth: '900px', margin: '0 auto', padding: '64px 24px' }}>
-        <Link to="/menus" style={{ color: '#8B1A1A', textDecoration: 'none', fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '40px' }}>
+        <Link to="/menus" style={{ color: 'var(--gold-light)', textDecoration: 'none', fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '40px' }}>
           ← Back to Menus
         </Link>
 
-        <div style={{ backgroundColor: '#3D0808', color: 'white', borderRadius: '8px', padding: '20px 24px', marginBottom: '40px', textAlign: 'center' }}>
+        <div style={{ backgroundColor: '#1a1208', color: 'white', borderRadius: '8px', padding: '20px 24px', marginBottom: '40px', textAlign: 'center' }}>
           <span style={{ fontSize: '20px' }}>🎄 </span>
-          <strong style={{ color: '#E2C97E' }}>Decorations up by 20th November · Down 6th January</strong>
+          <strong style={{ color: 'var(--gold-light)' }}>Decorations up by 20th November · Down 6th January</strong>
           <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '14px', marginTop: '6px' }}>We are sorry but we are closed on Christmas Day</p>
         </div>
 
         {/* Senior Christmas */}
         <div style={{ marginBottom: '56px' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '26px', color: '#8B1A1A', marginBottom: '8px' }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '26px', color: 'var(--gold-light)', marginBottom: '8px' }}>
             Senior Citizens Christmas Menu 2025
           </h2>
-          <p style={{ color: '#6B5E52', fontSize: '14px', marginBottom: '20px' }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '20px' }}>
             Served Wed 19th November 2025 – Tue 6th Jan 2026 · Available all day every day<br />
             <strong>£22.95 lunch only · £24.95 sing-alongs and evenings</strong>
           </p>
@@ -33,12 +33,12 @@ export default function ChristmasMenuPage() {
               { course: 'Main Courses', items: ['Traditional Roast Turkey — with new & roast potatoes, fresh vegetables', 'Beef Stroganoff — slow cooked in mushroom, mustard & white wine sauce', 'Deep Fried Scampi — with chips and salad', 'Chicken Paprikash — with a creamy paprika sauce', 'Gammon Steak & Egg — with chips & vegetables', 'Pepperpot Pork — chunks of pork in creamy pepper sauce', 'Cheesy Leek & Potato Bake — with salad and chips'] },
               { course: 'Desserts', items: ['Christmas Pudding — with brandy sauce', 'Traditional Trifle — with fresh cream', 'Profiteroles — choux pastry with cream & chocolate sauce', 'Apple & Caramel Crumble — with fresh cream', 'Ice Cream — with butterscotch sauce'] },
             ].map(({ course, items }) => (
-              <div key={course} style={{ backgroundColor: '#FAF7F2', border: '1px solid #E8DFD0', borderRadius: '8px', padding: '20px' }}>
-                <h3 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '17px', color: '#8B1A1A', marginBottom: '12px' }}>{course}</h3>
+              <div key={course} style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: '8px', padding: '20px' }}>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '17px', color: 'var(--gold-light)', marginBottom: '12px' }}>{course}</h3>
                 {items.map(i => (
                   <div key={i} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '8px' }}>
-                    <span style={{ color: '#C9A84C', fontSize: '10px', flexShrink: 0, marginTop: '5px' }}>●</span>
-                    <span style={{ color: '#4A3D34', fontSize: '14px', lineHeight: 1.5 }}>{i}</span>
+                    <span style={{ color: 'var(--gold)', fontSize: '10px', flexShrink: 0, marginTop: '5px' }}>●</span>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.5 }}>{i}</span>
                   </div>
                 ))}
               </div>
@@ -48,10 +48,10 @@ export default function ChristmasMenuPage() {
 
         {/* Full Christmas Menu */}
         <div style={{ marginBottom: '48px' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '26px', color: '#8B1A1A', marginBottom: '8px' }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '26px', color: 'var(--gold-light)', marginBottom: '8px' }}>
             Christmas Menu 2025
           </h2>
-          <p style={{ color: '#6B5E52', fontSize: '14px', marginBottom: '20px' }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '20px' }}>
             Served from 19th Nov · Available all day every day 12–8pm<br />
             <strong>£33.95 Mon–Thu · £35.95 Fri–Sun</strong>
           </p>
@@ -61,12 +61,12 @@ export default function ChristmasMenuPage() {
               { course: 'Main Courses', items: ['Traditional Roast Turkey — with stuffing', 'Beef Stroganoff — slow cooked in mushroom, mustard & white wine sauce', 'Chicken Paprikash — with creamy paprika sauce', 'Deep Fried Scampi — with chips, peas & salad', 'Peppered Burger — 6oz bacon cheeseburger with pepper sauce', 'Cheesy Leek & Potato Bake — with chips & salad', 'Pepperpot Pork — in creamy pepper sauce', '10oz Rump Steak — £3 extra'] },
               { course: 'Desserts', items: ['Christmas Pudding — with brandy sauce', 'Traditional Trifle — topped with fresh cream', 'Apple & Caramel Crumble — with fresh cream', 'Ice Cream — with butterscotch sauce', 'Profiteroles — with fresh cream & chocolate sauce', 'Cheese & Biscuits — with crackers & pickles'] },
             ].map(({ course, items }) => (
-              <div key={course} style={{ backgroundColor: '#FAF7F2', border: '1px solid #E8DFD0', borderRadius: '8px', padding: '20px' }}>
-                <h3 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '17px', color: '#8B1A1A', marginBottom: '12px' }}>{course}</h3>
+              <div key={course} style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: '8px', padding: '20px' }}>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '17px', color: 'var(--gold-light)', marginBottom: '12px' }}>{course}</h3>
                 {items.map(i => (
                   <div key={i} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', marginBottom: '8px' }}>
-                    <span style={{ color: '#C9A84C', fontSize: '10px', flexShrink: 0, marginTop: '5px' }}>●</span>
-                    <span style={{ color: '#4A3D34', fontSize: '14px', lineHeight: 1.5 }}>{i}</span>
+                    <span style={{ color: 'var(--gold)', fontSize: '10px', flexShrink: 0, marginTop: '5px' }}>●</span>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.5 }}>{i}</span>
                   </div>
                 ))}
               </div>
@@ -74,15 +74,15 @@ export default function ChristmasMenuPage() {
           </div>
         </div>
 
-        <div style={{ backgroundColor: '#3D0808', borderRadius: '8px', padding: '28px', textAlign: 'center', color: 'white' }}>
-          <p style={{ color: '#E2C97E', fontFamily: "'Playfair Display', Georgia, serif", fontSize: '20px', marginBottom: '12px' }}>
+        <div style={{ backgroundColor: '#1a1208', borderRadius: '8px', padding: '28px', textAlign: 'center', color: 'white' }}>
+          <p style={{ color: 'var(--gold-light)', fontFamily: 'var(--font-display)', fontSize: '20px', marginBottom: '12px' }}>
             Boxing Day & New Year's Eve
           </p>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '15px', marginBottom: '20px' }}>
             All menus available · Open from 10am for breakfasts
           </p>
           <Link to="/book" className="btn btn-reserve">
-            Reserve a Table
+            Reserve Your Table
           </Link>
         </div>
       </div>

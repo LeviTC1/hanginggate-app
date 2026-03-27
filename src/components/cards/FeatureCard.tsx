@@ -15,7 +15,7 @@ export default function FeatureCard({ number, title, body, className }: FeatureC
         className,
       )}
     >
-      <span className="pointer-events-none absolute right-4 top-0 font-display text-[64px] leading-none text-[rgba(27,20,15,0.06)]">
+      <span className="pointer-events-none absolute right-4 top-0 font-display text-[64px] leading-none text-[rgba(241,244,236,0.16)]">
         {number}
       </span>
 

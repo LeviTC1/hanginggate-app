@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { Menu, X } from 'lucide-react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
@@ -9,6 +9,7 @@ const navItems = [
   { label: 'Welcome', to: '/' },
   { label: 'Menus', to: '/menus' },
   { label: 'Events', to: '/events' },
+  { label: 'Meet the Team', to: '/team' },
   { label: 'Book a Table', to: '/book' },
   { label: 'Christmas', to: '/christmas' },
   { label: 'Contact', to: '/contact' },
@@ -17,6 +18,7 @@ const navItems = [
 export default function SiteNav() {
   const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
+  const headerRef = useRef<HTMLElement | null>(null)
   const { scrolled } = useNavScroll({ threshold: 80 })
   const seasonalMode = useMemo(() => getSeasonalMode(), [])
   const isChristmasMode = seasonalMode === 'christmas'
@@ -25,28 +27,78 @@ export default function SiteNav() {
     setMenuOpen(false)
   }, [location.pathname])
 
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth >= 768) {
+        setMenuOpen(false)
+      }
+    }
+
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    window.addEventListener('keydown', handleEscape)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('keydown', handleEscape)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!menuOpen) {
+      return
+    }
+
+    function closeOnOutside(event: MouseEvent | TouchEvent) {
+      const target = event.target as Node
+      if (headerRef.current && !headerRef.current.contains(target)) {
+        setMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', closeOnOutside)
+    document.addEventListener('touchstart', closeOnOutside)
+
+    return () => {
+      document.removeEventListener('mousedown', closeOnOutside)
+      document.removeEventListener('touchstart', closeOnOutside)
+    }
+  }, [menuOpen])
+
   return (
     <header
+      ref={headerRef}
       className={clsx(
-        'fixed inset-x-0 top-0 z-[90] border-b transition-colors duration-300',
+        'fixed inset-x-0 top-0 z-[90] border-b border-[rgba(200,144,26,0.22)] bg-[#121910]/96 backdrop-blur-sm transition-colors duration-300',
         scrolled
-          ? 'border-[rgba(200,134,10,0.3)] bg-[#1a1208]'
-          : 'border-transparent bg-transparent',
+          ? 'border-[rgba(200,144,26,0.22)] bg-[#121910]/95 backdrop-blur-sm'
+          : 'border-[rgba(200,144,26,0.18)] bg-[#121910]/96 backdrop-blur-sm',
       )}
     >
       <div className="container">
         <div className="flex min-h-[78px] items-center justify-between gap-4">
           <Link to="/" className="group flex flex-col no-underline">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[rgba(255,255,255,0.72)] transition-colors duration-200 group-hover:text-[var(--gold)]">
+            <span
+              className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--text-inverse)] transition-colors duration-200 group-hover:text-[var(--gold-light)]"
+              style={{ textShadow: '0 1px 6px rgba(0,0,0,0.45)' }}
+            >
               The
             </span>
-            <span className="font-display text-[26px] font-semibold leading-none tracking-[-0.01em] text-white">
+            <span
+              className="font-display text-[26px] font-semibold leading-none tracking-[-0.01em] text-[var(--text-inverse)] transition-colors duration-200 group-hover:text-[var(--gold-light)]"
+              style={{ textShadow: '0 1px 8px rgba(0,0,0,0.45)' }}
+            >
               Hanging Gate
             </span>
           </Link>
 
           <div className="flex items-center gap-3">
-            <nav className="hidden items-center gap-4 md:flex" aria-label="Main navigation">
+            <nav className="hidden items-center gap-2 md:flex" aria-label="Main navigation">
               {navItems.map((item) => (
                 <NavLink
                   key={item.to}
@@ -54,18 +106,14 @@ export default function SiteNav() {
                   end={item.to === '/'}
                   className={({ isActive }) =>
                     clsx(
-                      'group relative px-1 py-2 text-[13px] font-medium uppercase tracking-[0.12em] text-[rgba(255,255,255,0.86)] transition-colors duration-200 hover:text-white',
-                      isActive && 'text-[var(--gold)]',
+                      'relative inline-flex items-center rounded-[var(--radius-sm)] px-2 py-3 font-display text-[12px] font-semibold uppercase tracking-[0.12em] !text-[var(--gold-light)] drop-shadow-[0_1px_6px_rgba(0,0,0,0.55)] transition-colors duration-200 hover:!text-[var(--text-inverse)] no-underline',
+                      isActive
+                        ? '!text-[var(--text-inverse)] border-b border-[var(--gold)]'
+                        : 'border-b border-transparent',
                     )
                   }
                 >
-                  {({ isActive }) => (
-                    <>
-                      <span>{item.label}</span>
-                      <span className="absolute inset-x-0 -bottom-[2px] h-px origin-left scale-x-0 bg-[var(--gold)] transition-transform duration-200 group-hover:scale-x-100" />
-                      {isActive ? <span className="absolute left-1/2 top-full mt-1 h-1 w-1 -translate-x-1/2 rounded-full bg-[var(--gold)]" /> : null}
-                    </>
-                  )}
+                  {item.label}
                 </NavLink>
               ))}
             </nav>
@@ -73,17 +121,17 @@ export default function SiteNav() {
             <Link
               to="/book"
               className={clsx(
-                'nav-reserve-link inline-flex min-h-[44px] items-center justify-center rounded-full bg-[var(--gold)] px-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#1a1208] no-underline shadow-[0_6px_18px_rgba(200,134,10,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--gold-muted)] md:min-h-[46px] md:px-6 md:text-[12px]',
+                'nav-reserve-link btn btn-primary font-display min-h-[42px] px-5 text-[11px] md:min-h-[44px] md:px-6',
                 isChristmasMode && 'seasonal-reserve-pulse',
               )}
             >
-              Reserve
+              Book Now
             </Link>
 
             <button
               type="button"
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(255,255,255,0.2)] bg-[rgba(8,6,4,0.32)] text-white transition-colors duration-200 hover:border-[var(--gold)] hover:text-[var(--gold)] md:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border border-[rgba(255,255,255,0.2)] bg-[rgba(15,20,13,0.48)] text-white transition-colors duration-200 hover:border-[var(--gold)] hover:text-[var(--gold)] md:hidden"
               aria-expanded={menuOpen}
               aria-controls="mobile-main-nav"
               aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
@@ -96,9 +144,12 @@ export default function SiteNav() {
 
       <div
         id="mobile-main-nav"
+        aria-hidden={!menuOpen}
         className={clsx(
-          'overflow-hidden border-t bg-[#1a1208] transition-all duration-300 md:hidden',
-          menuOpen ? 'max-h-[420px] border-[rgba(200,134,10,0.3)] opacity-100' : 'max-h-0 border-transparent opacity-0',
+          'overflow-hidden border-t bg-[#162017] transition-all duration-300 md:hidden',
+          menuOpen
+            ? 'pointer-events-auto max-h-[420px] border-[rgba(200,144,26,0.26)] opacity-100'
+            : 'pointer-events-none max-h-0 border-transparent opacity-0',
         )}
       >
         <nav className="container flex flex-col gap-1 py-4" aria-label="Mobile navigation">
@@ -109,8 +160,8 @@ export default function SiteNav() {
               end={item.to === '/'}
               className={({ isActive }) =>
                 clsx(
-                  'rounded-md px-2 py-3 text-[14px] font-semibold uppercase tracking-[0.12em] text-[rgba(255,255,255,0.9)] no-underline transition-colors duration-200 hover:text-[#e8c96b]',
-                  isActive && 'text-[#c8860a]',
+                  'rounded-[var(--radius-sm)] px-2 py-3 font-display text-[14px] font-semibold uppercase tracking-[0.12em] text-[rgba(255,255,255,0.9)] no-underline transition-colors duration-200 hover:text-[var(--gold-light)]',
+                  isActive && 'text-[var(--gold)]',
                 )
               }
             >

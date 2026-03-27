@@ -17,15 +17,15 @@ type SectionWrapperProps = {
 const VARIANT_CLASS: Record<SectionVariant, string> = {
   light: 'bg-[var(--surface-card)]',
   warm: 'bg-[var(--surface-warm)]',
-  dark: 'bg-gradient-to-b from-[#1a0e08] to-[#0e0804] text-[var(--text-inverse)]',
-  ink: 'bg-[#0a0604] text-[var(--text-inverse)]',
+  dark: 'bg-gradient-to-b from-[var(--surface-dark-2)] to-[var(--surface-dark)] text-[var(--text-inverse)]',
+  ink: 'bg-[#0d140e] text-[var(--text-inverse)]',
 }
 
 const PADDING_CLASS: Record<SectionPadding, string> = {
-  sm: 'py-12 md:py-16',
-  md: 'py-16 md:py-24',
-  lg: 'py-24 md:py-32',
-  xl: 'py-32 md:py-44',
+  sm: 'py-10 md:py-12',
+  md: 'py-12 md:py-16',
+  lg: 'py-16 md:py-20',
+  xl: 'py-20 md:py-28',
 }
 
 function cx(...parts: Array<string | undefined | false>) {

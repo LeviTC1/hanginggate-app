@@ -17,29 +17,29 @@ export default function Footer() {
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '54px 24px 24px' }}>
         <div className="fade-up" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '40px', marginBottom: '40px' }}>
           <div>
-            <h3 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '24px', color: '#FAF7F2', marginBottom: '8px' }}>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', color: 'var(--surface-card)', marginBottom: '8px' }}>
               The Hanging Gate
             </h3>
-            <p style={{ fontSize: '12px', color: '#E2C97E', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>
+            <p style={{ fontSize: '12px', color: 'var(--gold-light)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>
               Pub & Restaurant
             </p>
             <p style={{ fontSize: '14px', lineHeight: 1.7, marginBottom: '18px' }}>
               A family run pub & restaurant in the heart of the High Peak, open every day from 10am.
             </p>
             <Link to="/book" className="btn btn-reserve" style={{ fontSize: '12px' }}>
-              Reserve a Table
+              Reserve Your Table
             </Link>
           </div>
 
           <div>
-            <h4 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '17px', color: '#E2C97E', marginBottom: '16px' }}>Find Us</h4>
+            <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '17px', color: 'var(--gold-light)', marginBottom: '16px' }}>Find Us</h4>
             <address style={{ fontStyle: 'normal', fontSize: '14px', lineHeight: '1.8' }}>
               Manchester Road<br />
-              Chapel-en-le-Frith<br />
+              Chapel-en-le-Frith, High Peak, Derbyshire<br />
               SK23 9UH
             </address>
             <div style={{ marginTop: '12px', fontSize: '14px' }}>
-              <a href="tel:01298812776" className="animated-link" style={{ color: '#E2C97E', textDecoration: 'none', display: 'block', marginBottom: '6px', width: 'fit-content' }}>
+              <a href="tel:01298812776" className="animated-link" style={{ color: 'var(--gold-light)', textDecoration: 'none', display: 'block', marginBottom: '6px', width: 'fit-content' }}>
                 ☎ 01298 812776
               </a>
               <a href="mailto:hanginggatechapel@gmail.com" className="animated-link" style={{ color: 'rgba(255,255,255,0.72)', textDecoration: 'none', fontSize: '13px', width: 'fit-content' }}>
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '17px', color: '#E2C97E', marginBottom: '16px' }}>Opening Hours</h4>
+            <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '17px', color: 'var(--gold-light)', marginBottom: '16px' }}>Opening Hours</h4>
             <div style={{ fontSize: '14px', lineHeight: 2 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px' }}>
                 <span>Every day</span>
@@ -67,7 +67,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '17px', color: '#E2C97E', marginBottom: '16px' }}>Explore</h4>
+            <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '17px', color: 'var(--gold-light)', marginBottom: '16px' }}>Explore</h4>
             <nav style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {links.map(l => (
                 <Link key={l.to} to={l.to} className="footer-link animated-link">

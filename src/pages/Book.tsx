@@ -9,7 +9,7 @@ export default function Book() {
       <SEO
         path="/book"
         title="Book a Table"
-        description="Reserve your table at Bridge 42 with instant online availability and confirmation."
+        description="Reserve Your Table at The Hanging Gate with instant online availability and confirmation."
       />
       <PageHero title="Book a Table" subtitle="Live availability · Instant confirmation" />
 
@@ -24,13 +24,13 @@ export default function Book() {
 
           <aside style={{ display: 'grid', gap: '12px' }}>
             <div style={{
-              background: 'linear-gradient(160deg, #1B130E, #2B1A11)',
+              background: 'linear-gradient(160deg, #182217, #253322)',
               border: '1px solid rgba(216,181,108,0.32)',
               borderRadius: '14px',
               padding: '20px',
-              color: '#F9ECCE',
+              color: 'var(--text-inverse)',
             }}>
-              <p style={{ color: '#E2C97E', fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px', fontWeight: 700 }}>
+              <p style={{ color: 'var(--gold-light)', fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '8px', fontWeight: 700 }}>
                 Need help?
               </p>
               <h3 style={{ fontSize: '22px', marginBottom: '8px' }}>Call the team</h3>
@@ -43,16 +43,16 @@ export default function Book() {
             </div>
 
             <div style={{
-              background: 'rgba(255,255,255,0.76)',
-              border: '1px solid rgba(139,26,26,0.16)',
+              background: 'rgba(22,38,26,0.9)',
+              border: '1px solid rgba(29,36,27,0.16)',
               borderRadius: '12px',
               padding: '18px',
             }}>
-              <p style={{ color: '#7B1515', fontSize: '15px', fontWeight: 700, marginBottom: '8px' }}>Planning a private event?</p>
-              <p style={{ color: '#5E4D40', fontSize: '14px', lineHeight: 1.7, marginBottom: '12px' }}>
+              <p style={{ color: 'var(--gold)', fontSize: '15px', fontWeight: 700, marginBottom: '8px' }}>Planning a private event?</p>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.7, marginBottom: '12px' }}>
                 For weddings, buffets and larger function bookings, visit our functions page.
               </p>
-              <Link to="/menus/functions" className="animated-link" style={{ color: '#7B1515', fontWeight: 700 }}>
+              <Link to="/menus/functions" className="animated-link" style={{ color: 'var(--gold)', fontWeight: 700 }}>
                 View function packages
               </Link>
             </div>

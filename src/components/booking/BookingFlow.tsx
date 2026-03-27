@@ -32,12 +32,21 @@ const DEFAULT_GUESTS = 2
 const inputStyle: CSSProperties = {
   width: '100%',
   padding: '12px 14px',
-  border: '1px solid rgba(139,26,26,0.2)',
+  border: '1px solid var(--border-strong)',
   borderRadius: '8px',
   fontSize: '15px',
-  backgroundColor: '#FFFCF8',
-  color: '#1F1712',
+  backgroundColor: 'var(--surface-card)',
+  color: 'var(--text-primary)',
   fontFamily: 'inherit',
+}
+
+function mapGuestsToPartySize(guestCount: number): string {
+  if (guestCount <= 5) return '2–5'
+  if (guestCount <= 10) return '6–10'
+  if (guestCount <= 20) return '11–20'
+  if (guestCount <= 50) return '21–50'
+  if (guestCount <= 100) return '51–100'
+  return '100+'
 }
 
 function validateDetails(form: DetailsForm): Partial<Record<keyof DetailsForm, string>> {
@@ -86,6 +95,7 @@ export default function BookingFlow() {
   const [submitError, setSubmitError] = useState<string>('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [confirmation, setConfirmation] = useState<BookingRecord | null>(null)
+  const [contactRequestReady, setContactRequestReady] = useState(false)
 
   const { data: availability, slots, loading: availabilityLoading, error: availabilityError } = useAvailability(date, guests)
 
@@ -126,6 +136,11 @@ export default function BookingFlow() {
 
   function handleTimeNext() {
     if (!time) {
+      if (noSlotsForDate || availability?.closed) {
+        goToStep(4)
+        return
+      }
+
       setStepError('Please select an available time slot.')
       return
     }
@@ -142,6 +157,12 @@ export default function BookingFlow() {
 
     if (Object.keys(errors).length > 0) {
       setSubmitError('Please fix the highlighted fields.')
+      return
+    }
+
+    if (isContactRequestMode) {
+      setContactRequestReady(true)
+      goToStep(5)
       return
     }
 
@@ -179,6 +200,36 @@ export default function BookingFlow() {
 
   const minDate = today
   const maxDate = addDays(today, DEFAULT_MAX_ADVANCE_DAYS)
+  const contactPrefillHref = useMemo(() => {
+    const params = new URLSearchParams()
+    const fullName = `${details.firstName} ${details.lastName}`.trim()
+    const prefillMessage = [
+      'Hello, I would like help with a table booking request.',
+      '',
+      `Guests: ${guests}`,
+      `Preferred date: ${formatDateLong(date)}`,
+      time ? `Preferred time: ${formatTimeLabel(time)}` : '',
+      details.notes.trim() ? `Booking notes: ${details.notes.trim()}` : '',
+      '',
+      'Please contact me to confirm availability.',
+    ]
+      .filter(Boolean)
+      .join('\n')
+
+    if (fullName) params.set('name', fullName)
+    if (details.email.trim()) params.set('email', details.email.trim())
+    if (details.phone.trim()) params.set('phone', details.phone.trim())
+
+    params.set('date', date)
+    params.set('partySize', mapGuestsToPartySize(guests))
+    params.set('subject', 'General enquiry')
+    params.set('message', prefillMessage)
+
+    return `/contact?${params.toString()}`
+  }, [date, details.email, details.firstName, details.lastName, details.notes, details.phone, guests, time])
+  const hasAnyAvailableSlots = slots.some((slot) => slot.available)
+  const noSlotsForDate = !availabilityLoading && !availability?.closed && !hasAnyAvailableSlots
+  const isContactRequestMode = (noSlotsForDate || Boolean(availability?.closed)) && !time
 
   return (
     <div style={{ display: 'grid', gap: '18px' }}>
@@ -202,19 +253,36 @@ export default function BookingFlow() {
                 letterSpacing: '0.04em',
                 fontWeight: 700,
                 textTransform: 'uppercase',
-                border: active ? '1px solid #E2C97E' : '1px solid rgba(139,26,26,0.2)',
+                border: active ? '1px solid var(--gold-light)' : '1px solid var(--border-default)',
                 background: active
-                  ? 'linear-gradient(160deg, #1B130E, #2B1A11)'
+                  ? 'linear-gradient(160deg, #182217, #253322)'
                   : complete
-                    ? 'rgba(139,26,26,0.1)'
-                    : 'rgba(255,255,255,0.6)',
-                color: active ? '#F8EBCB' : '#6A5344',
+                    ? 'rgba(200,144,26,0.12)'
+                    : 'rgba(22,38,26,0.9)',
+                color: active ? 'var(--text-inverse)' : 'var(--text-secondary)',
               }}
             >
               {item.title}
             </div>
           )
         })}
+      </div>
+
+      <div
+        style={{
+          borderRadius: '10px',
+          border: '1px solid rgba(216,181,108,0.34)',
+          background: 'rgba(216,181,108,0.08)',
+          padding: '12px 14px',
+          fontSize: '13px',
+          color: 'var(--text-secondary)',
+          lineHeight: 1.6,
+        }}
+      >
+        Need help with this request?{' '}
+        <Link to={contactPrefillHref} style={{ color: 'var(--gold)', fontWeight: 700, textDecoration: 'none' }}>
+          Send this booking info to our contact form →
+        </Link>
       </div>
 
       {step === 1 && (
@@ -225,7 +293,7 @@ export default function BookingFlow() {
                 type="button"
                 className="btn btn-outline-light"
                 onClick={() => setGuests((prev) => Math.max(1, prev - 1))}
-                style={{ minWidth: '48px', padding: '12px 0', color: '#5B4638', borderColor: 'rgba(139,26,26,0.28)', background: '#fff' }}
+                style={{ minWidth: '48px', padding: '12px 0', color: 'var(--text-secondary)', borderColor: 'var(--border-strong)', background: 'var(--surface-card)' }}
               >
                 −
               </button>
@@ -241,7 +309,7 @@ export default function BookingFlow() {
                 type="button"
                 className="btn btn-outline-light"
                 onClick={() => setGuests((prev) => Math.min(20, prev + 1))}
-                style={{ minWidth: '48px', padding: '12px 0', color: '#5B4638', borderColor: 'rgba(139,26,26,0.28)', background: '#fff' }}
+                style={{ minWidth: '48px', padding: '12px 0', color: 'var(--text-secondary)', borderColor: 'var(--border-strong)', background: 'var(--surface-card)' }}
               >
                 +
               </button>
@@ -257,7 +325,7 @@ export default function BookingFlow() {
       {step === 2 && (
         <StepCard title="Choose a date" subtitle="Bookings are available up to 90 days ahead.">
           <div style={{ display: 'grid', gap: '16px' }}>
-            <label style={{ color: '#4A3D34', fontSize: '14px', fontWeight: 600 }}>
+            <label style={{ color: 'var(--text-secondary)', fontSize: '14px', fontWeight: 600 }}>
               Date
               <input
                 type="date"
@@ -270,7 +338,7 @@ export default function BookingFlow() {
             </label>
 
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              <button type="button" className="btn btn-outline-light" onClick={() => goToStep(1)} style={{ color: '#4B3B2F', borderColor: 'rgba(139,26,26,0.2)', background: '#fff' }}>
+              <button type="button" className="btn btn-outline-light" onClick={() => goToStep(1)} style={{ color: 'var(--text-secondary)', borderColor: 'var(--border-strong)', background: 'var(--surface-card)' }}>
                 Back
               </button>
               <button type="button" className="btn btn-reserve" onClick={handleDateNext}>
@@ -287,16 +355,16 @@ export default function BookingFlow() {
           subtitle={`Availability for ${formatDateLong(date)} · ${guests} guest${guests > 1 ? 's' : ''}`}
         >
           <div style={{ display: 'grid', gap: '16px' }}>
-            {availabilityLoading && <p style={{ color: '#6B5E52' }}>Loading available times…</p>}
-            {availabilityError && <p style={{ color: '#8B1A1A' }}>{availabilityError}</p>}
+            {availabilityLoading && <p style={{ color: 'var(--text-secondary)' }}>Loading available times…</p>}
+            {availabilityError && <p style={{ color: 'var(--gold)' }}>{availabilityError}</p>}
 
             {!availabilityLoading && availability?.closed && (
               <div style={{
                 padding: '14px 16px',
                 borderRadius: '10px',
-                border: '1px solid rgba(139,26,26,0.22)',
-                background: 'rgba(139,26,26,0.08)',
-                color: '#6A2A2A',
+                border: '1px solid rgba(200,144,26,0.32)',
+                background: 'rgba(200,144,26,0.1)',
+                color: 'var(--text-inverse)',
                 fontSize: '14px',
               }}>
                 {availability.message || 'This date is currently closed.'}
@@ -308,12 +376,18 @@ export default function BookingFlow() {
             )}
 
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              <button type="button" className="btn btn-outline-light" onClick={() => goToStep(2)} style={{ color: '#4B3B2F', borderColor: 'rgba(139,26,26,0.2)', background: '#fff' }}>
+              <button type="button" className="btn btn-outline-light" onClick={() => goToStep(2)} style={{ color: 'var(--text-secondary)', borderColor: 'var(--border-strong)', background: 'var(--surface-card)' }}>
                 Back
               </button>
-              <button type="button" className="btn btn-reserve" onClick={handleTimeNext}>
-                Continue
-              </button>
+              {noSlotsForDate || availability?.closed ? (
+                <button type="button" className="btn btn-reserve" onClick={handleTimeNext}>
+                  Continue to Details
+                </button>
+              ) : (
+                <button type="button" className="btn btn-reserve" onClick={handleTimeNext}>
+                  Continue
+                </button>
+              )}
             </div>
           </div>
         </StepCard>
@@ -327,35 +401,36 @@ export default function BookingFlow() {
               background: 'rgba(216,181,108,0.12)',
               border: '1px solid rgba(216,181,108,0.32)',
               padding: '12px 14px',
-              color: '#5A4026',
+              color: 'var(--text-secondary)',
               fontSize: '13px',
               lineHeight: 1.6,
             }}>
-              <strong>Booking summary:</strong> {formatDateLong(date)} at {formatTimeLabel(time)} for {guests} guest{guests > 1 ? 's' : ''}
+              <strong>Booking summary:</strong> {formatDateLong(date)} {time ? `at ${formatTimeLabel(time)} ` : ''}for {guests} guest{guests > 1 ? 's' : ''}
+              {isContactRequestMode ? ' · no online slots available, we will pass this as a contact request.' : ''}
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px' }}>
-              <label style={{ color: '#4A3D34', fontSize: '13px', fontWeight: 600 }}>
+              <label style={{ color: 'var(--text-secondary)', fontSize: '13px', fontWeight: 600 }}>
                 First name
                 <input
                   value={details.firstName}
                   onChange={(event) => setDetails((prev) => ({ ...prev, firstName: event.target.value }))}
                   style={{ ...inputStyle, marginTop: '6px' }}
                 />
-                {fieldErrors.firstName && <span style={{ color: '#8B1A1A', fontSize: '12px' }}>{fieldErrors.firstName}</span>}
+                {fieldErrors.firstName && <span style={{ color: 'var(--gold)', fontSize: '12px' }}>{fieldErrors.firstName}</span>}
               </label>
-              <label style={{ color: '#4A3D34', fontSize: '13px', fontWeight: 600 }}>
+              <label style={{ color: 'var(--text-secondary)', fontSize: '13px', fontWeight: 600 }}>
                 Last name
                 <input
                   value={details.lastName}
                   onChange={(event) => setDetails((prev) => ({ ...prev, lastName: event.target.value }))}
                   style={{ ...inputStyle, marginTop: '6px' }}
                 />
-                {fieldErrors.lastName && <span style={{ color: '#8B1A1A', fontSize: '12px' }}>{fieldErrors.lastName}</span>}
+                {fieldErrors.lastName && <span style={{ color: 'var(--gold)', fontSize: '12px' }}>{fieldErrors.lastName}</span>}
               </label>
             </div>
 
-            <label style={{ color: '#4A3D34', fontSize: '13px', fontWeight: 600 }}>
+            <label style={{ color: 'var(--text-secondary)', fontSize: '13px', fontWeight: 600 }}>
               Email
               <input
                 type="email"
@@ -363,20 +438,20 @@ export default function BookingFlow() {
                 onChange={(event) => setDetails((prev) => ({ ...prev, email: event.target.value }))}
                 style={{ ...inputStyle, marginTop: '6px' }}
               />
-              {fieldErrors.email && <span style={{ color: '#8B1A1A', fontSize: '12px' }}>{fieldErrors.email}</span>}
+              {fieldErrors.email && <span style={{ color: 'var(--gold)', fontSize: '12px' }}>{fieldErrors.email}</span>}
             </label>
 
-            <label style={{ color: '#4A3D34', fontSize: '13px', fontWeight: 600 }}>
+            <label style={{ color: 'var(--text-secondary)', fontSize: '13px', fontWeight: 600 }}>
               Phone (optional)
               <input
                 value={details.phone}
                 onChange={(event) => setDetails((prev) => ({ ...prev, phone: event.target.value }))}
                 style={{ ...inputStyle, marginTop: '6px' }}
               />
-              {fieldErrors.phone && <span style={{ color: '#8B1A1A', fontSize: '12px' }}>{fieldErrors.phone}</span>}
+              {fieldErrors.phone && <span style={{ color: 'var(--gold)', fontSize: '12px' }}>{fieldErrors.phone}</span>}
             </label>
 
-            <label style={{ color: '#4A3D34', fontSize: '13px', fontWeight: 600 }}>
+            <label style={{ color: 'var(--text-secondary)', fontSize: '13px', fontWeight: 600 }}>
               Notes / allergies (optional)
               <textarea
                 value={details.notes}
@@ -384,16 +459,16 @@ export default function BookingFlow() {
                 rows={4}
                 style={{ ...inputStyle, marginTop: '6px', resize: 'vertical' }}
               />
-              {fieldErrors.notes && <span style={{ color: '#8B1A1A', fontSize: '12px' }}>{fieldErrors.notes}</span>}
+              {fieldErrors.notes && <span style={{ color: 'var(--gold)', fontSize: '12px' }}>{fieldErrors.notes}</span>}
             </label>
 
             {submitError && (
               <div style={{
                 padding: '12px 14px',
                 borderRadius: '8px',
-                background: 'rgba(139,26,26,0.1)',
-                border: '1px solid rgba(139,26,26,0.26)',
-                color: '#7E1D1D',
+                background: 'rgba(200,144,26,0.12)',
+                border: '1px solid rgba(200,144,26,0.32)',
+                color: 'var(--text-inverse)',
                 fontSize: '13px',
               }}>
                 {submitError}
@@ -401,11 +476,11 @@ export default function BookingFlow() {
             )}
 
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              <button type="button" className="btn btn-outline-light" onClick={() => goToStep(3)} style={{ color: '#4B3B2F', borderColor: 'rgba(139,26,26,0.2)', background: '#fff' }}>
+              <button type="button" className="btn btn-outline-light" onClick={() => goToStep(3)} style={{ color: 'var(--text-secondary)', borderColor: 'var(--border-strong)', background: 'var(--surface-card)' }}>
                 Back
               </button>
               <button type="submit" className="btn btn-reserve" disabled={isSubmitting}>
-                {isSubmitting ? 'Confirming…' : 'Confirm Booking'}
+                {isContactRequestMode ? 'Finalise Contact Request' : isSubmitting ? 'Confirming…' : 'Confirm Booking'}
               </button>
             </div>
           </form>
@@ -416,20 +491,20 @@ export default function BookingFlow() {
         <StepCard title="Booking confirmed" subtitle="Your table is reserved.">
           <div style={{ display: 'grid', gap: '14px' }}>
             <div style={{
-              background: 'linear-gradient(165deg, #1B130E, #2B1A11)',
+              background: 'linear-gradient(165deg, #182217, #253322)',
               border: '1px solid rgba(216,181,108,0.35)',
               borderRadius: '12px',
               padding: '18px',
-              color: '#F5E7C6',
+              color: 'var(--text-inverse)',
             }}>
               <p style={{ fontSize: '13px', opacity: 0.86, marginBottom: '6px' }}>Reference</p>
               <p style={{ fontSize: '28px', fontWeight: 800, letterSpacing: '0.08em' }}>{confirmation.reference}</p>
             </div>
 
-            <p style={{ color: '#4A3D34', fontSize: '15px', lineHeight: 1.7 }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: 1.7 }}>
               We’ve emailed confirmation to <strong>{confirmation.email}</strong>.
             </p>
-            <p style={{ color: '#5B4638', fontSize: '14px' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>
               {formatDateLong(confirmation.date)} at {formatTimeLabel(confirmation.time)} · {confirmation.guests} guest{confirmation.guests > 1 ? 's' : ''}
             </p>
 
@@ -440,13 +515,50 @@ export default function BookingFlow() {
         </StepCard>
       )}
 
+      {step === 5 && !confirmation && contactRequestReady && (
+        <StepCard title="Request ready" subtitle="Your booking details are prepared for the contact form.">
+          <div style={{ display: 'grid', gap: '14px' }}>
+            <div style={{
+              background: 'linear-gradient(165deg, #182217, #253322)',
+              border: '1px solid rgba(216,181,108,0.35)',
+              borderRadius: '12px',
+              padding: '18px',
+              color: 'var(--text-inverse)',
+            }}>
+              <p style={{ fontSize: '13px', opacity: 0.86, marginBottom: '6px' }}>Request summary</p>
+              <p style={{ fontSize: '17px', lineHeight: 1.6 }}>
+                {formatDateLong(date)} {time ? `at ${formatTimeLabel(time)} ` : ''}for {guests} guest{guests > 1 ? 's' : ''}
+              </p>
+            </div>
+
+            <p style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: 1.7 }}>
+              We couldn’t complete this booking online for the selected date/time. You can now send this as a prefilled enquiry.
+            </p>
+
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <Link to={contactPrefillHref} className="btn btn-reserve">
+                Finalise Contact Request
+              </Link>
+              <button
+                type="button"
+                className="btn btn-outline-light"
+                onClick={() => goToStep(4)}
+                style={{ color: 'var(--text-secondary)', borderColor: 'var(--border-strong)', background: 'var(--surface-card)' }}
+              >
+                Back to Details
+              </button>
+            </div>
+          </div>
+        </StepCard>
+      )}
+
       {stepError && (
         <div
           style={{
             borderRadius: '10px',
-            border: '1px solid rgba(139,26,26,0.22)',
-            background: 'rgba(139,26,26,0.08)',
-            color: '#7D1B1B',
+            border: '1px solid rgba(200,144,26,0.32)',
+            background: 'rgba(200,144,26,0.12)',
+            color: 'var(--text-inverse)',
             padding: '12px 14px',
             fontSize: '13px',
           }}

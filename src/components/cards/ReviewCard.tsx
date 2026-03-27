@@ -14,7 +14,7 @@ function Stars({ count }: { count: number }) {
         <svg
           key={index}
           viewBox="0 0 24 24"
-          className={clsx('h-4 w-4', index < count ? 'text-[var(--gold)]' : 'text-[rgba(27,20,15,0.2)]')}
+          className={clsx('h-4 w-4', index < count ? 'text-[var(--gold)]' : 'text-[rgba(68,82,63,0.26)]')}
           fill="currentColor"
           aria-hidden="true"
         >
@@ -29,7 +29,7 @@ export default function ReviewCard({ quote, name, stars = 5, className }: Review
   return (
     <article
       className={clsx(
-        'group relative overflow-hidden rounded-2xl border border-[var(--border-default)] bg-[var(--surface-card)] p-6 shadow-[var(--shadow-sm)] transition-all duration-300 ease-[var(--ease-spring)] hover:-translate-y-1 hover:shadow-[var(--shadow-md)]',
+        'group relative overflow-hidden rounded-[var(--radius-md)] border border-[var(--border-default)] bg-[var(--surface-card)] p-6 shadow-[var(--shadow-sm)] transition-all duration-300 ease-[var(--ease-spring)] hover:-translate-y-1 hover:shadow-[var(--shadow-md)]',
         className,
       )}
     >
@@ -41,7 +41,10 @@ export default function ReviewCard({ quote, name, stars = 5, className }: Review
 
       <div className="relative z-10 flex h-full flex-col">
         <Stars count={stars} />
-        <p className="mt-4 flex-1 font-display text-[16px] italic leading-[1.75] text-[var(--ink-700)]">
+        <p
+          className="mt-4 flex-1 text-[16px] italic leading-[1.75] text-[var(--ink-700)]"
+          style={{ fontFamily: 'var(--font-editorial)' }}
+        >
           {quote}
         </p>
 

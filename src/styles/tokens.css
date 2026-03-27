@@ -1,44 +1,51 @@
 :root {
-  /* Core brand */
-  --wine: #7b1313;
-  --wine-deep: #4d0b0b;
-  --gold: #d4a832;
-  --gold-muted: #b8922a;
-  --gold-glow: rgba(212, 168, 50, 0.25);
+  /* ── Brand colours ─────────────────────────────── */
+  --wine: #d4a832;
+  --wine-deep: #c8901a;
+  --gold: #c8901a;          /* Richer, less yellow — Peak District amber */
+  --gold-light: #d4a832;    /* Highlight/hover state */
+  --gold-muted: #a87618;
+  --gold-parchment: #e8d5a3;
+  --gold-glow: rgba(200, 144, 26, 0.22);
 
-  /* Surfaces */
-  --surface-page: #fbf8f2;
-  --surface-card: #fffdf9;
-  --surface-warm: #f3ece1;
-  --surface-dark: #0e0804;
-  --surface-dark-2: #1a0e08;
+  /* ── Surfaces ──────────────────────────────────── */
+  --surface-page: #0f1b12;        /* Base dark moor green */
+  --surface-card: #16261a;        /* Raised dark green card */
+  --surface-warm: #132117;        /* Section dark green */
+  --surface-stone: #1a2c1f;       /* Mid dark green */
+  --surface-dark: #0f1510;        /* Deep green-black */
+  --surface-dark-2: #162017;      /* Dark peat green */
+  --surface-peat: #243125;        /* Warm dark green */
 
-  /* Text */
-  --text-primary: #1b140f;
-  --text-secondary: #6f5b4a;
-  --text-muted: #9c8776;
-  --text-inverse: #ffffff;
-  --text-inverse-muted: rgba(255, 255, 255, 0.6);
+  /* ── Text ──────────────────────────────────────── */
+  --text-primary: #f1f4ec;        /* Primary light text */
+  --text-secondary: rgba(241, 244, 236, 0.82);
+  --text-muted: rgba(241, 244, 236, 0.6);
+  --text-inverse: #f1f4ec;        /* Soft chalk */
+  --text-inverse-muted: rgba(241, 244, 236, 0.62);
 
-  /* Borders */
-  --border-default: rgba(27, 20, 15, 0.1);
-  --border-strong: rgba(27, 20, 15, 0.2);
-  --border-gold: rgba(212, 168, 50, 0.4);
+  /* ── Borders ───────────────────────────────────── */
+  --border-default: rgba(241, 244, 236, 0.14);
+  --border-strong: rgba(241, 244, 236, 0.22);
+  --border-gold: rgba(200, 144, 26, 0.38);
+  --border-warm: rgba(241, 244, 236, 0.18);
 
-  /* Typography */
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Manrope', system-ui, sans-serif;
+  /* ── Typography ────────────────────────────────── */
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-body: 'Cinzel', Georgia, serif;
+  --font-editorial: 'Cinzel', Georgia, serif;
+
   --text-xs: 11px;
   --text-sm: 13px;
   --text-base: 15px;
   --text-md: 17px;
-  --text-lg: clamp(20px, 2.2vw, 24px);
-  --text-xl: clamp(24px, 3vw, 32px);
-  --text-2xl: clamp(30px, 4vw, 42px);
-  --text-3xl: clamp(40px, 5.5vw, 64px);
-  --text-hero: clamp(52px, 8vw, 96px);
+  --text-lg: clamp(19px, 2.1vw, 23px);
+  --text-xl: clamp(22px, 2.8vw, 30px);
+  --text-2xl: clamp(28px, 3.8vw, 40px);
+  --text-3xl: clamp(36px, 5vw, 58px);
+  --text-hero: clamp(44px, 7vw, 88px);
 
-  /* Spacing */
+  /* ── Spacing ───────────────────────────────────── */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -50,32 +57,32 @@
   --space-24: 96px;
   --space-32: 128px;
 
-  /* Radius */
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-pill: 100px;
+  /* ── Radius — NO PILLS ─────────────────────────── */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-pill: 4px;  /* intentionally NOT 100px — any remnant pill usage becomes rectangular */
 
-  /* Elevation */
-  --shadow-sm: 0 2px 8px rgba(27, 14, 8, 0.06);
-  --shadow-md: 0 8px 24px rgba(27, 14, 8, 0.08);
-  --shadow-lg: 0 16px 48px rgba(27, 14, 8, 0.12);
-  --shadow-xl: 0 32px 64px rgba(12, 7, 4, 0.18);
-  --glow-gold-sm: 0 0 16px rgba(212, 168, 50, 0.25);
-  --glow-gold-md: 0 0 32px rgba(212, 168, 50, 0.35);
-  --glow-gold-lg: 0 0 64px rgba(212, 168, 50, 0.2);
-  --inset-gold: inset 0 0 0 1.5px rgba(212, 168, 50, 0.6);
+  /* ── Elevation ─────────────────────────────────── */
+  --shadow-sm: 0 1px 6px rgba(26, 14, 6, 0.06);
+  --shadow-md: 0 4px 18px rgba(26, 14, 6, 0.08);
+  --shadow-lg: 0 12px 40px rgba(26, 14, 6, 0.11);
+  --shadow-xl: 0 24px 56px rgba(10, 6, 2, 0.16);
+  --glow-gold-sm: 0 0 12px rgba(200, 144, 26, 0.22);
+  --glow-gold-md: 0 0 28px rgba(200, 144, 26, 0.30);
+  --glow-gold-lg: 0 0 56px rgba(200, 144, 26, 0.18);
+  --inset-gold: inset 0 0 0 1px rgba(200, 144, 26, 0.55);
 
-  /* Motion */
+  /* ── Motion ────────────────────────────────────── */
   --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Legacy aliases (keep existing pages stable during refactor) */
+  /* ── Legacy aliases (keep stable during refactor) ─ */
   --ink-900: var(--text-primary);
-  --ink-700: #3f3227;
+  --ink-700: rgba(241, 244, 236, 0.86);
   --ink-500: var(--text-secondary);
   --surface-soft: var(--surface-warm);
   --surface-elevated: var(--surface-card);
@@ -83,15 +90,15 @@
   --brand-wine: var(--wine);
   --brand-wine-strong: var(--wine-deep);
   --brand-gold: var(--gold);
-  --brand-gold-soft: #ead6a6;
-  --brand-gold-faint: rgba(216, 181, 108, 0.32);
-  --border-warm: rgba(77, 56, 37, 0.2);
+  --brand-gold-soft: #e2c882;
+  --brand-gold-faint: rgba(200, 144, 26, 0.28);
   --ease-premium: var(--ease-spring);
 }
 
 html[data-season='halloween'] {
-  --gold: #7a1c1c;
-  --gold-muted: #8f2525;
-  --gold-glow: rgba(122, 28, 28, 0.3);
-  --border-gold: rgba(122, 28, 28, 0.45);
+  --gold: #c44e18;           /* Burnt orange, not red */
+  --gold-light: #d86422;
+  --gold-muted: #a83e12;
+  --gold-glow: rgba(196, 78, 24, 0.28);
+  --border-gold: rgba(196, 78, 24, 0.42);
 }
