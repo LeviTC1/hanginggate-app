@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import MenuCard from '../components/cards/MenuCard'
 import CinematicHero from '../components/sections/CinematicHero'
 import CTABand from '../components/sections/CTABand'
+import DecorationLegacySection from '../components/sections/DecorationLegacySection'
 import EventsTeaser from '../components/sections/EventsTeaser'
 import FeaturesSection from '../components/sections/FeaturesSection'
 import QuickLinks from '../components/sections/QuickLinks'
@@ -49,6 +50,7 @@ export default function Home() {
       />
 
       <CinematicHero />
+      <DecorationLegacySection />
       <TrustBar />
       <QuickLinks />
       <StorySection />
