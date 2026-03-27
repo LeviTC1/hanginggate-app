@@ -21,6 +21,37 @@
   }
 }
 
+@keyframes reservePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes seasonalDrift {
+  0% {
+    transform: translate3d(0, -12vh, 0);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.55;
+  }
+
+  88% {
+    opacity: 0.55;
+  }
+
+  100% {
+    transform: translate3d(18px, 112vh, 0);
+    opacity: 0;
+  }
+}
+
 @keyframes riseIn {
   from {
     opacity: 0;
@@ -84,6 +115,28 @@
   background-size: 180px 180px;
   mix-blend-mode: soft-light;
   opacity: 0.03;
+}
+
+.seasonal-reserve-pulse {
+  animation: reservePulse 2s ease-in-out infinite;
+}
+
+.seasonal-particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.seasonal-particle {
+  position: absolute;
+  top: -12vh;
+  color: rgba(232, 201, 107, 0.46);
+  line-height: 1;
+  animation-name: seasonalDrift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
 ::-webkit-scrollbar {

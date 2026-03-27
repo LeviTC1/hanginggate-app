@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import clsx from 'clsx'
 import { Menu, X } from 'lucide-react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import useNavScroll from '../../hooks/useNavScroll'
+import { getSeasonalMode } from '../../utils/seasonalMode'
 
 const navItems = [
   { label: 'Welcome', to: '/' },
@@ -17,6 +18,8 @@ export default function SiteNav() {
   const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
   const { scrolled } = useNavScroll({ threshold: 80 })
+  const seasonalMode = useMemo(() => getSeasonalMode(), [])
+  const isChristmasMode = seasonalMode === 'christmas'
 
   useEffect(() => {
     setMenuOpen(false)
@@ -69,7 +72,10 @@ export default function SiteNav() {
 
             <Link
               to="/book"
-              className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-[#c8860a] px-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#1a1208] no-underline shadow-[0_6px_18px_rgba(200,134,10,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#e8c96b] md:min-h-[46px] md:px-6 md:text-[12px]"
+              className={clsx(
+                'nav-reserve-link inline-flex min-h-[44px] items-center justify-center rounded-full bg-[var(--gold)] px-4 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#1a1208] no-underline shadow-[0_6px_18px_rgba(200,134,10,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--gold-muted)] md:min-h-[46px] md:px-6 md:text-[12px]',
+                isChristmasMode && 'seasonal-reserve-pulse',
+              )}
             >
               Reserve
             </Link>

@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
 import { Link } from 'react-router-dom'
+import { getSeasonalMode } from '../../utils/seasonalMode'
 
 type SeasonalHero = {
   key: 'christmas' | 'halloween' | 'year-round'
@@ -29,6 +30,7 @@ const seasonalHeroes: SeasonalHero[] = [
 
 export default function CinematicHero() {
   const [activeSeason, setActiveSeason] = useState<SeasonalHero['key']>('christmas')
+  const siteSeasonMode = useMemo(() => getSeasonalMode(), [])
 
   const activeHero = useMemo(
     () => seasonalHeroes.find((season) => season.key === activeSeason) ?? seasonalHeroes[0],
@@ -38,6 +40,7 @@ export default function CinematicHero() {
   const isHalloween = activeSeason === 'halloween'
   const accentColor = isHalloween ? '#7a1c1c' : '#c8860a'
   const accentHover = isHalloween ? '#8f2525' : '#e8c96b'
+  const eyebrowText = siteSeasonMode === 'christmas' ? "Voted the UK's most festive pub" : 'Award-winning atmosphere'
 
   return (
     <section aria-label="The Hanging Gate cinematic hero" className="relative flex min-h-[100svh] items-end overflow-hidden pt-[78px]">
@@ -63,7 +66,7 @@ export default function CinematicHero() {
             className="hero-eyebrow text-[11px] font-semibold uppercase tracking-[0.22em]"
             style={{ color: accentColor }}
           >
-            Award-winning atmosphere
+            {eyebrowText}
           </p>
 
           <h1 className="mt-4 font-display text-[clamp(44px,8vw,96px)] font-bold leading-[1.03] tracking-[-0.02em] text-white">
@@ -108,6 +111,26 @@ export default function CinematicHero() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-[rgba(10,6,4,0.95)] via-[rgba(10,6,4,0.68)] to-transparent"
       />
+
+      {siteSeasonMode === 'halloween' ? (
+        <svg
+          viewBox="0 0 240 240"
+          aria-hidden="true"
+          className="pointer-events-none absolute right-0 top-[78px] z-10 h-[220px] w-[220px] opacity-[0.15] md:h-[250px] md:w-[250px]"
+          fill="none"
+          stroke="#f5f0e8"
+          strokeWidth="1.2"
+        >
+          <path d="M240 0H0" />
+          <path d="M240 0V240" />
+          <path d="M240 0L0 240" />
+          <path d="M240 0Q170 70 100 140Q50 190 0 240" />
+          <path d="M240 0Q180 90 120 180Q80 215 40 240" />
+          <path d="M210 30Q120 120 30 210" />
+          <path d="M180 60Q120 120 60 180" />
+          <path d="M150 90Q120 120 90 150" />
+        </svg>
+      ) : null}
 
       <style>{`
         .hero-eyebrow {

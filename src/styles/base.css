@@ -264,6 +264,11 @@ select.input-base:focus {
   border: 0;
 }
 
+html[data-season='halloween'] .nav-reserve-link {
+  color: #f5f0e8;
+  box-shadow: 0 6px 18px rgba(122, 28, 28, 0.35);
+}
+
 @media (max-width: 900px) {
   body {
     padding-bottom: calc(env(safe-area-inset-bottom) + 96px);

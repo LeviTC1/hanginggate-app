@@ -88,3 +88,10 @@
   --border-warm: rgba(77, 56, 37, 0.2);
   --ease-premium: var(--ease-spring);
 }
+
+html[data-season='halloween'] {
+  --gold: #7a1c1c;
+  --gold-muted: #8f2525;
+  --gold-glow: rgba(122, 28, 28, 0.3);
+  --border-gold: rgba(122, 28, 28, 0.45);
+}
