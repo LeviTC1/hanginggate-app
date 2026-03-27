@@ -48,9 +48,9 @@ export default function AfternoonTea() {
             🎵 Entertainment available for senior citizens coach parties if required
           </p>
           <p style={{ color: '#6B5E52', fontSize: '14px', marginBottom: '16px' }}>Served Monday to Friday, 3:00pm – 6:00pm only</p>
-          <a href="tel:01298812776" style={{ color: '#8B1A1A', fontWeight: 700, fontSize: '18px', textDecoration: 'none' }}>
-            01298 812776
-          </a>
+          <Link to="/book" className="btn btn-reserve">
+            Reserve a Table
+          </Link>
         </div>
       </div>
     </div>

@@ -39,7 +39,7 @@ export default function HeroCarousel() {
     setTimeout(() => {
       setCurrent(idx)
       setTransitioning(false)
-    }, 400)
+    }, 420)
   }, [transitioning])
 
   const next = useCallback(() => goTo((current + 1) % slides.length), [current, goTo])
@@ -53,90 +53,94 @@ export default function HeroCarousel() {
   const slide = slides[current]
 
   return (
-    <section style={{ position: 'relative', minHeight: 'clamp(420px, 60vw, 640px)', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
-      {/* Images — preload next */}
+    <section className="hero-section" aria-label="The Hanging Gate intro hero">
       {slides.map((s, i) => (
         <img
           key={s.src}
           src={s.src}
           alt={s.alt}
+          className="hero-image"
           style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
             opacity: i === current ? (transitioning ? 0 : 1) : 0,
-            transition: 'opacity 0.8s ease',
+            transition: 'opacity 0.9s ease',
             zIndex: i === current ? 1 : 0,
           }}
         />
       ))}
 
-      {/* Overlay */}
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(61,8,8,0.82) 0%, rgba(139,26,26,0.7) 50%, rgba(92,48,16,0.72) 100%)', zIndex: 2 }} />
+      <div className="hero-overlay" />
 
-      {/* Content */}
-      <div style={{ position: 'relative', zIndex: 3, maxWidth: '700px', margin: '0 auto', padding: 'clamp(48px, 8vw, 96px) 24px', textAlign: 'center', width: '100%' }}>
-        <p style={{ color: '#E2C97E', fontSize: '13px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '20px', fontWeight: 500 }}>
+      <div className="hero-content">
+        <p className="hero-reveal" style={{ color: '#E2C97E', fontSize: '13px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '20px', fontWeight: 500, ['--hero-delay']: '80ms' }}>
           Chapel-en-le-Frith · High Peak · Derbyshire
         </p>
-        <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(36px, 7vw, 72px)', color: '#FAF7F2', lineHeight: 1.1, marginBottom: '16px', fontWeight: 700 }}>
+        <h1 className="hero-reveal" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(36px, 7vw, 72px)', color: '#FAF7F2', lineHeight: 1.1, marginBottom: '16px', fontWeight: 700, ['--hero-delay']: '160ms' }}>
           The Hanging Gate
         </h1>
-        <p style={{ color: '#E2C97E', fontSize: '18px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '24px' }}>
+        <p className="hero-reveal" style={{ color: '#E2C97E', fontSize: '18px', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '24px', ['--hero-delay']: '220ms' }}>
           Pub & Restaurant
         </p>
-        <p style={{
-          color: 'rgba(255,255,255,0.85)',
-          fontSize: 'clamp(14px, 2.2vw, 17px)',
-          lineHeight: 1.7,
-          marginBottom: '12px',
-          minHeight: '28px',
-          transition: 'opacity 0.4s',
-          opacity: transitioning ? 0 : 1,
-          fontStyle: 'italic',
-        }}>
+        <p
+          className="hero-reveal"
+          style={{
+            color: 'rgba(255,255,255,0.86)',
+            fontSize: 'clamp(14px, 2.2vw, 17px)',
+            lineHeight: 1.7,
+            marginBottom: '12px',
+            minHeight: '28px',
+            transition: 'opacity 0.4s',
+            opacity: transitioning ? 0 : 1,
+            fontStyle: 'italic',
+            ['--hero-delay']: '280ms',
+          }}
+        >
           {slide.caption}
         </p>
-        <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 'clamp(14px, 2vw, 16px)', lineHeight: 1.7, marginBottom: '40px' }}>
+        <p className="hero-reveal" style={{ color: 'rgba(255,255,255,0.72)', fontSize: 'clamp(14px, 2vw, 16px)', lineHeight: 1.7, marginBottom: '34px', ['--hero-delay']: '340ms' }}>
           Open every day from 10am — a family run pub & restaurant set in the beautiful High Peak
         </p>
-        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link to="/menus" style={{ backgroundColor: '#E2C97E', color: '#3D0808', padding: '14px 32px', borderRadius: '4px', textDecoration: 'none', fontWeight: 700, fontSize: '15px', letterSpacing: '0.5px' }}>
+        <div className="hero-reveal" style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', ['--hero-delay']: '420ms' }}>
+          <Link to="/menus" className="btn btn-gold">
             View Our Menus
           </Link>
-          <a href="tel:01298812776" style={{ backgroundColor: 'transparent', color: '#FAF7F2', padding: '14px 32px', borderRadius: '4px', textDecoration: 'none', fontWeight: 500, fontSize: '15px', border: '1px solid rgba(255,255,255,0.5)' }}>
+          <Link to="/book" className="btn btn-outline-light">
             Reserve a Table
-          </a>
+          </Link>
+        </div>
+        <div className="hero-reveal" style={{ ['--hero-delay']: '480ms' }}>
+          <p className="urgency-note">Limited availability this weekend</p>
         </div>
       </div>
 
-      {/* Prev / Next arrows */}
       <button
         onClick={prev}
         aria-label="Previous image"
-        style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', zIndex: 4, background: 'rgba(0,0,0,0.35)', border: 'none', color: 'white', width: '44px', height: '44px', borderRadius: '50%', cursor: 'pointer', fontSize: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        className="hero-control"
+        style={{ left: '16px' }}
       >
         ‹
       </button>
       <button
         onClick={next}
         aria-label="Next image"
-        style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', zIndex: 4, background: 'rgba(0,0,0,0.35)', border: 'none', color: 'white', width: '44px', height: '44px', borderRadius: '50%', cursor: 'pointer', fontSize: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        className="hero-control"
+        style={{ right: '16px' }}
       >
         ›
       </button>
 
-      {/* Dots */}
       <div style={{ position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)', zIndex: 4, display: 'flex', gap: '8px' }}>
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
             aria-label={`Go to slide ${i + 1}`}
-            style={{ width: i === current ? '24px' : '8px', height: '8px', borderRadius: '4px', border: 'none', cursor: 'pointer', backgroundColor: i === current ? '#E2C97E' : 'rgba(255,255,255,0.5)', transition: 'all 0.3s', padding: 0 }}
+            className="hero-dot"
+            style={{
+              width: i === current ? '24px' : '8px',
+              height: '8px',
+              backgroundColor: i === current ? '#E2C97E' : 'rgba(255,255,255,0.5)',
+            }}
           />
         ))}
       </div>

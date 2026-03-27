@@ -1,15 +1,16 @@
-import Nav from './Nav'
-import Footer from './Footer'
-import MobileCTA from './MobileCTA'
+import SiteNav from './layout/SiteNav'
+import SiteFooter from './layout/SiteFooter'
+import MobileCTA from './layout/MobileCTA'
+import useScrollReveal from '../hooks/useScrollReveal'
 
 export default function Layout({ children }) {
+  useScrollReveal()
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100svh' }}>
-      <Nav />
-      <main style={{ flex: 1 }}>
-        {children}
-      </main>
-      <Footer />
+    <div className="site-shell">
+      <SiteNav />
+      <main className="site-main">{children}</main>
+      <SiteFooter />
       <MobileCTA />
     </div>
   )

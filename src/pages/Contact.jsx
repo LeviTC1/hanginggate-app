@@ -1,5 +1,6 @@
 import SEO from '../components/SEO'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero'
 
 const inputStyle = {
@@ -55,7 +56,7 @@ export default function Contact() {
 
   return (
     <div>
-      <SEO path="/contact" description="Contact The Hanging Gate pub & restaurant in Chapel-en-le-Frith. Call 01298 812776 for reservations. Manchester Road, SK23 9UH." />
+      <SEO path="/contact" description="Contact The Hanging Gate pub & restaurant in Chapel-en-le-Frith. Book tables online or call 01298 812776. Manchester Road, SK23 9UH." />
       <PageHero title="Contact Us" subtitle="We'd love to hear from you" />
       <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '64px 24px' }}>
 
@@ -89,8 +90,11 @@ export default function Contact() {
                     01298 812776
                   </a>
                   <p style={{ color: '#6B5E52', fontSize: '13px', marginTop: '4px' }}>
-                    Please call for reservations — do not use the form for bookings
+                    For table reservations, book online or call us directly.
                   </p>
+                  <Link to="/book" className="btn btn-reserve" style={{ marginTop: '10px', fontSize: '12px' }}>
+                    Book a Table
+                  </Link>
                 </div>
               </div>
 
@@ -164,7 +168,12 @@ export default function Contact() {
               Send an Enquiry
             </h2>
             <div style={{ backgroundColor: '#FFF8E7', border: '1px solid #C9A84C', borderRadius: '6px', padding: '12px 16px', marginBottom: '24px', fontSize: '13px', color: '#7A5C00', lineHeight: 1.6 }}>
-              ⚠️ <strong>For table reservations please call 01298 812776.</strong> Use this form for general enquiries, event bookings and outside catering only.
+              ⚠️ <strong>For table reservations, please use our online booking page.</strong> Use this form for general enquiries, event bookings and outside catering only.
+              <div style={{ marginTop: '10px' }}>
+                <Link to="/book" className="btn btn-reserve" style={{ fontSize: '11px' }}>
+                  Open Booking
+                </Link>
+              </div>
             </div>
 
             {status === 'success' ? (

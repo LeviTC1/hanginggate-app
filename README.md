@@ -1,16 +1,73 @@
-# React + Vite
+# Bridge 42 Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite + TypeScript restaurant site with a custom in-house booking MVP.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Premium multi-step booking flow at `/book`
+- Capacity-based slot availability (`/api/availability`)
+- Booking creation with race-condition protection (`/api/bookings`)
+- Admin day view and status updates at `/admin`
+- Admin APIs protected by `x-admin-key` + `ADMIN_SECRET`
+- Guest confirmation and admin notification emails via Resend
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Frontend: React, Vite
+- Backend APIs: Vercel Functions (`/api/*`)
+- Database: Neon Postgres (`@neondatabase/serverless`)
+- Validation: zod
+- Email: Resend
 
-## Expanding the ESLint configuration
+## Environment Variables
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Copy `.env.example` to `.env` and set:
+
+- `DATABASE_URL` (required): Neon/Postgres connection string
+- `ADMIN_SECRET` (required): admin key used by `/admin` requests
+- `RESEND_API_KEY` (required for emails)
+- `BOOKING_FROM_EMAIL` (optional but recommended)
+- `BOOKING_ADMIN_EMAIL` (optional but recommended for admin notifications)
+- `BOOKING_CONTACT_PHONE` (optional)
+
+## Database Setup
+
+Run migration:
+
+```bash
+psql "$DATABASE_URL" -f db/migrations/001_booking_system.sql
+```
+
+Optional editable seed helpers:
+
+```bash
+psql "$DATABASE_URL" -f db/seed/seed_booking_mvp.sql
+```
+
+Default seeded hours are daily `10:00` to `20:00` and can be changed in `time_slot_config`.
+
+## Run Locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Test + Build
+
+```bash
+npm run test
+npm run build
+```
+
+## Booking API Endpoints
+
+- `GET /api/availability?date=YYYY-MM-DD&guests=4`
+- `POST /api/bookings`
+- `GET /api/bookings?date=YYYY-MM-DD` (admin header required)
+- `PUT /api/bookings/:id` (admin header required)
+
+## Notes
+
+- Booking logic uses `Europe/London` local time for “today/past slot” handling.
+- Email send failures do not roll back successful bookings.

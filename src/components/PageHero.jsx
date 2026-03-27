@@ -1,47 +1,19 @@
-export default function PageHero({ title, subtitle }) {
+export default function PageHero({ title, subtitle, className = '' }) {
   return (
-    <div style={{
-      backgroundColor: '#6B0E0E',
-      backgroundImage: `
-        linear-gradient(135deg, #4A0A0A 0%, #8B1A1A 45%, #6B1414 100%),
-        repeating-linear-gradient(
-          45deg,
-          transparent,
-          transparent 18px,
-          rgba(255,255,255,0.025) 18px,
-          rgba(255,255,255,0.025) 19px
-        )
-      `,
-      padding: '52px 24px 48px',
-      textAlign: 'center',
-      position: 'relative',
-      overflow: 'hidden',
-    }}>
-      {/* Corner ornaments */}
-      <div style={{ position: 'absolute', top: '16px', left: '24px', color: 'rgba(226,201,126,0.25)', fontSize: '28px', lineHeight: 1 }}>✦</div>
-      <div style={{ position: 'absolute', top: '16px', right: '24px', color: 'rgba(226,201,126,0.25)', fontSize: '28px', lineHeight: 1 }}>✦</div>
+    <header className={`relative overflow-hidden border-b border-[rgba(212,168,50,0.2)] bg-[linear-gradient(140deg,#120906_0%,#29140e_45%,#4b1514_100%)] pb-12 pt-32 text-center ${className}`}>
+      <div className="grain-overlay" />
 
-      <p style={{ color: 'rgba(226,201,126,0.7)', fontSize: '11px', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '14px', fontWeight: 500 }}>
-        The Hanging Gate
-      </p>
-      <h1 style={{
-        fontFamily: "'Playfair Display', Georgia, serif",
-        fontSize: 'clamp(26px, 5vw, 42px)',
-        color: '#FAF7F2',
-        marginBottom: subtitle ? '10px' : 0,
-        fontWeight: 700,
-        letterSpacing: '-0.5px',
-      }}>
-        {title}
-      </h1>
-      {subtitle && (
-        <p style={{ color: '#E2C97E', fontSize: '15px', letterSpacing: '0.5px', opacity: 0.9 }}>{subtitle}</p>
-      )}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginTop: '18px' }}>
-        <div style={{ height: '1px', width: '48px', backgroundColor: '#C9A84C', opacity: 0.5 }} />
-        <div style={{ width: '5px', height: '5px', backgroundColor: '#C9A84C', borderRadius: '50%', opacity: 0.8 }} />
-        <div style={{ height: '1px', width: '48px', backgroundColor: '#C9A84C', opacity: 0.5 }} />
+      <div className="relative container">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[rgba(212,168,50,0.72)]">The Hanging Gate</p>
+        <h1 className="mt-4 font-display text-[clamp(30px,5vw,52px)] font-semibold tracking-[-0.02em] text-white">{title}</h1>
+        {subtitle ? <p className="mx-auto mt-3 max-w-[56ch] text-[15px] leading-[1.7] text-[rgba(255,255,255,0.72)]">{subtitle}</p> : null}
+
+        <div className="mt-7 flex items-center justify-center gap-3" aria-hidden="true">
+          <span className="h-px w-12 bg-[rgba(212,168,50,0.5)]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
+          <span className="h-px w-12 bg-[rgba(212,168,50,0.5)]" />
+        </div>
       </div>
-    </div>
+    </header>
   )
 }

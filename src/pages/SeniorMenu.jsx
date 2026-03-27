@@ -79,9 +79,9 @@ export default function SeniorMenu() {
           <p style={{ color: '#6B5E52', fontSize: '14px', marginBottom: '12px' }}>
             Entertainment also available for senior citizens coach parties if required.
           </p>
-          <a href="tel:01298812776" style={{ color: '#8B1A1A', fontWeight: 700, fontSize: '18px', textDecoration: 'none' }}>
-            01298 812776
-          </a>
+          <Link to="/book" className="btn btn-reserve">
+            Book Online
+          </Link>
         </div>
       </div>
     </div>

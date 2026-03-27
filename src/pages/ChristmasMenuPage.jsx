@@ -81,9 +81,9 @@ export default function ChristmasMenuPage() {
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '15px', marginBottom: '20px' }}>
             All menus available · Open from 10am for breakfasts
           </p>
-          <a href="tel:01298812776" style={{ backgroundColor: '#E2C97E', color: '#3D0808', padding: '12px 28px', borderRadius: '4px', textDecoration: 'none', fontWeight: 700, fontSize: '16px', display: 'inline-block' }}>
-            Call 01298 812776 to reserve
-          </a>
+          <Link to="/book" className="btn btn-reserve">
+            Reserve a Table
+          </Link>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resendApiKey = globalThis.process?.env?.RESEND_API_KEY
+const resend = resendApiKey ? new Resend(resendApiKey) : null
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -11,6 +12,10 @@ export default async function handler(req, res) {
 
   if (!email || !message) {
     return res.status(400).json({ error: 'Email and message are required' })
+  }
+
+  if (!resend) {
+    return res.status(500).json({ error: 'Email service is not configured' })
   }
 
   try {

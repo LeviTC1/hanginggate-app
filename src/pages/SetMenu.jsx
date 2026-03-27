@@ -73,9 +73,9 @@ export default function SetMenu() {
         <div style={{ marginTop: '48px', backgroundColor: '#8B1A1A', borderRadius: '8px', padding: '32px', textAlign: 'center', color: 'white' }}>
           <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '36px', fontWeight: 700, color: '#E2C97E', marginBottom: '8px' }}>£27.95</div>
           <div style={{ fontSize: '16px', marginBottom: '20px', opacity: 0.9 }}>per head · 3 courses</div>
-          <a href="tel:01298812776" style={{ backgroundColor: '#E2C97E', color: '#3D0808', padding: '12px 32px', borderRadius: '4px', textDecoration: 'none', fontWeight: 700, fontSize: '16px', display: 'inline-block' }}>
-            Call 01298 812776 to book
-          </a>
+          <Link to="/book" className="btn btn-reserve">
+            Reserve a Table
+          </Link>
         </div>
       </div>
     </div>
