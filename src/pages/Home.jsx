@@ -7,6 +7,7 @@ import EventsTeaser from '../components/sections/EventsTeaser'
 import FeaturesSection from '../components/sections/FeaturesSection'
 import QuickLinks from '../components/sections/QuickLinks'
 import ReviewsSection from '../components/sections/ReviewsSection'
+import SocialProofStrip from '../components/sections/SocialProofStrip'
 import StorySection from '../components/sections/StorySection'
 import TrustBar from '../components/sections/TrustBar'
 import RevealWrapper from '../components/ui/RevealWrapper'
@@ -53,6 +54,7 @@ export default function Home() {
       <DecorationLegacySection />
       <TrustBar />
       <QuickLinks />
+      <SocialProofStrip />
       <StorySection />
 
       <SectionWrapper variant="ink" py="lg">
