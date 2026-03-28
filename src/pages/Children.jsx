@@ -10,16 +10,16 @@ export default function Children() {
       <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '64px 24px' }}>
 
         {/* Intro */}
-        <p style={{ color: 'var(--text-secondary)', fontSize: '17px', lineHeight: 1.9, marginBottom: '20px' }}>
+        <p style={{ color: 'rgba(241,244,236,0.9)', fontSize: '17px', lineHeight: 1.9, marginBottom: '20px' }}>
           Here at the Hanging Gate we welcome children and believe that they are just as important
           (if not more so!) than the grown ups. It is our intention that they shall be catered for
           in as many ways as possible and that if we have satisfied kids then we will also have happy
           parents and carers, yey!!
         </p>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '17px', lineHeight: 1.9, marginBottom: '48px' }}>
+        <p style={{ color: 'rgba(241,244,236,0.9)', fontSize: '17px', lineHeight: 1.9, marginBottom: '48px' }}>
           Our Children's Menu has many children's favourites, and some that will please mum too!!
           To see what we have to offer, look at the special Children's Selection on our{' '}
-          <Link to="/menus/bar-restaurant" style={{ color: 'var(--surface-dark-2)', fontWeight: 600 }}>Bar/Restaurant menu</Link>.
+          <Link to="/menus/bar-restaurant" style={{ color: 'var(--gold-light)', fontWeight: 600 }}>Bar/Restaurant menu</Link>.
         </p>
 
         {/* Photo strip */}
@@ -39,12 +39,12 @@ export default function Children() {
         {/* Feature cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px', marginBottom: '56px' }}>
 
-          <div style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: '10px', padding: '28px 24px' }}>
+          <div style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--border-strong)', borderRadius: '10px', padding: '28px 24px' }}>
             <div style={{ fontSize: '36px', marginBottom: '12px' }}>👶</div>
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', color: 'var(--surface-dark-2)', marginBottom: '10px' }}>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', color: 'var(--gold-light)', marginBottom: '10px' }}>
               Officially Baby Friendly
             </h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.8 }}>
+            <p style={{ color: 'rgba(241,244,236,0.9)', fontSize: '14px', lineHeight: 1.8 }}>
               We are tremendously delighted to say that we are officially 'Baby Friendly', thanks to
               the very kind parent for nominating our parent and baby room to{' '}
               <em>Mother and Baby</em> magazine. The room has been decorated with baby in mind and
@@ -54,12 +54,12 @@ export default function Children() {
             </p>
           </div>
 
-          <div style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: '10px', padding: '28px 24px' }}>
+          <div style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--border-strong)', borderRadius: '10px', padding: '28px 24px' }}>
             <div style={{ fontSize: '36px', marginBottom: '12px' }}>🎨</div>
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', color: 'var(--surface-dark-2)', marginBottom: '10px' }}>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', color: 'var(--gold-light)', marginBottom: '10px' }}>
               Colouring Corner
             </h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.8 }}>
+            <p style={{ color: 'rgba(241,244,236,0.9)', fontSize: '14px', lineHeight: 1.8 }}>
               To keep the little ones busy we have a colouring corner which boasts a range of
               activities including mazes, word searches, fun facts as well as the ever popular
               'colour me' picture — which our colouring co-ordinator Kieran judges monthly with
@@ -67,28 +67,28 @@ export default function Children() {
             </p>
           </div>
 
-          <div style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: '10px', padding: '28px 24px' }}>
+          <div style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--border-strong)', borderRadius: '10px', padding: '28px 24px' }}>
             <div style={{ fontSize: '36px', marginBottom: '12px' }}>🌳</div>
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', color: 'var(--surface-dark-2)', marginBottom: '10px' }}>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', color: 'var(--gold-light)', marginBottom: '10px' }}>
               Outdoor Play Area
             </h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.8 }}>
+            <p style={{ color: 'rgba(241,244,236,0.9)', fontSize: '14px', lineHeight: 1.8 }}>
               For the warmer months of the year we have an outdoor play area.{' '}
               <strong>(Currently out of use — please check with us for updates.)</strong>
             </p>
           </div>
 
-          <div style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--border-default)', borderRadius: '10px', padding: '28px 24px' }}>
+          <div style={{ backgroundColor: 'var(--surface-card)', border: '1px solid var(--border-strong)', borderRadius: '10px', padding: '28px 24px' }}>
             <div style={{ fontSize: '36px', marginBottom: '12px' }}>🍽️</div>
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', color: 'var(--surface-dark-2)', marginBottom: '10px' }}>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', color: 'var(--gold-light)', marginBottom: '10px' }}>
               Children's Menu
             </h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.8 }}>
+            <p style={{ color: 'rgba(241,244,236,0.9)', fontSize: '14px', lineHeight: 1.8 }}>
               A dedicated children's menu with all their favourites — starters, mains and desserts.
               Available as part of our full bar & restaurant menu. Meals can be served with chips,
               jacket potato with beans, or vegetables.
             </p>
-            <Link to="/menus/bar-restaurant" style={{ display: 'inline-block', marginTop: '12px', color: 'var(--surface-dark-2)', fontWeight: 600, fontSize: '14px', textDecoration: 'none' }}>
+            <Link to="/menus/bar-restaurant" style={{ display: 'inline-block', marginTop: '12px', color: 'var(--gold-light)', fontWeight: 600, fontSize: '14px', textDecoration: 'none' }}>
               View the children's menu →
             </Link>
           </div>

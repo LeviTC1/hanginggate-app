@@ -8,9 +8,10 @@ import { getSeasonalMode } from '../../utils/seasonalMode'
 const navItems = [
   { label: 'Welcome', to: '/' },
   { label: 'Menus', to: '/menus' },
+  { label: 'Children', to: '/children' },
   { label: 'Events', to: '/events' },
-  { label: 'Meet the Team', to: '/team' },
-  { label: 'Book a Table', to: '/book' },
+  { label: 'Team', to: '/team' },
+  { label: 'Book', to: '/book' },
   { label: 'Christmas', to: '/christmas' },
   { label: 'Contact', to: '/contact' },
 ]
@@ -81,7 +82,7 @@ export default function SiteNav() {
       )}
     >
       <div className="container">
-        <div className="flex min-h-[78px] items-center justify-between gap-4">
+        <div className="flex min-h-[82px] items-center justify-between gap-3">
           <Link to="/" className="group flex flex-col no-underline">
             <span
               className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--text-inverse)] transition-colors duration-200 group-hover:text-[var(--gold-light)]"
@@ -90,15 +91,15 @@ export default function SiteNav() {
               The
             </span>
             <span
-              className="font-display text-[26px] font-semibold leading-none tracking-[-0.01em] text-[var(--text-inverse)] transition-colors duration-200 group-hover:text-[var(--gold-light)]"
+              className="font-display text-[24px] font-semibold leading-none tracking-[-0.01em] text-[var(--text-inverse)] transition-colors duration-200 group-hover:text-[var(--gold-light)]"
               style={{ textShadow: '0 1px 8px rgba(0,0,0,0.45)' }}
             >
               Hanging Gate
             </span>
           </Link>
 
-          <div className="flex items-center gap-3">
-            <nav className="hidden items-center gap-2 md:flex" aria-label="Main navigation">
+          <div className="flex items-center gap-2">
+            <nav className="hidden items-center gap-1 lg:flex xl:gap-2" aria-label="Main navigation">
               {navItems.map((item) => (
                 <NavLink
                   key={item.to}
@@ -106,7 +107,7 @@ export default function SiteNav() {
                   end={item.to === '/'}
                   className={({ isActive }) =>
                     clsx(
-                      'relative inline-flex items-center rounded-[var(--radius-sm)] px-2 py-3 font-display text-[12px] font-semibold uppercase tracking-[0.12em] !text-[var(--gold-light)] drop-shadow-[0_1px_6px_rgba(0,0,0,0.55)] transition-colors duration-200 hover:!text-[var(--text-inverse)] no-underline',
+                      'relative inline-flex items-center whitespace-nowrap rounded-[var(--radius-sm)] px-2 py-3 font-display text-[11px] font-semibold uppercase tracking-[0.1em] !text-[var(--gold-light)] drop-shadow-[0_1px_6px_rgba(0,0,0,0.55)] transition-colors duration-200 hover:!text-[var(--text-inverse)] no-underline',
                       isActive
                         ? '!text-[var(--text-inverse)] border-b border-[var(--gold)]'
                         : 'border-b border-transparent',
@@ -121,7 +122,7 @@ export default function SiteNav() {
             <Link
               to="/book"
               className={clsx(
-                'nav-reserve-link btn btn-primary font-display min-h-[42px] px-5 text-[11px] md:min-h-[44px] md:px-6',
+                'nav-reserve-link btn btn-primary font-display min-h-[42px] px-4 text-[10px] md:min-h-[44px] md:px-5',
                 isChristmasMode && 'seasonal-reserve-pulse',
               )}
             >
@@ -131,7 +132,7 @@ export default function SiteNav() {
             <button
               type="button"
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border border-[rgba(255,255,255,0.2)] bg-[rgba(15,20,13,0.48)] text-white transition-colors duration-200 hover:border-[var(--gold)] hover:text-[var(--gold)] md:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border border-[rgba(255,255,255,0.2)] bg-[rgba(15,20,13,0.48)] text-white transition-colors duration-200 hover:border-[var(--gold)] hover:text-[var(--gold)] lg:hidden"
               aria-expanded={menuOpen}
               aria-controls="mobile-main-nav"
               aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}

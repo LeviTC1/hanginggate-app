@@ -5,6 +5,7 @@ const exploreLinks = [
   { label: 'Welcome', to: '/' },
   { label: 'History', to: '/history' },
   { label: 'Facilities', to: '/facilities' },
+  { label: "Children's Amenities", to: '/children' },
   { label: 'Menus', to: '/menus' },
   { label: 'Events', to: '/events' },
   { label: 'Meet the Team', to: '/team' },

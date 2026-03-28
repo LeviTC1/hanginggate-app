@@ -46,11 +46,11 @@ export default function Team() {
         image="/images/team-mark.png"
       />
 
-      <PageHero title="Meet the Team" subtitle="The people behind The Hanging Gate" />
+      <PageHero title="Meet the Team" subtitle="The people behind The Hanging Gate" subtitleClassName="max-w-[44ch]" />
 
       <section className="container py-14 md:py-16">
         <div className="mx-auto max-w-[1060px]">
-          <div className="text-center">
+          <div className="mx-auto flex max-w-[72ch] flex-col items-center text-center">
             <p className="section-label">Our People</p>
             <p className="mx-auto mt-3 max-w-[66ch] text-[15px] leading-[1.8] text-[var(--text-secondary)]">
               A family-run pub only works when the people behind it care deeply. Here are the faces that
